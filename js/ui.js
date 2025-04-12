@@ -29,17 +29,17 @@ navButtons.forEach(button => {
 
     // 모든 섹션 숨기기
     Object.values(sections).forEach(sec => {
-      sec.style.display = "none";
+      sec.style.visibility = "hidden";
     });
 
     // 해당 섹션만 보여주기
     if (sections[target]) {
-      sections[target].style.display = "flex";
+      sections[target].style.visibility = "visible";
     }
   });
 });
 
 // 초기 로드시 functions-container 보이게 하기 (선택사항)
 window.onload = () => {
-  sections["functions-container"].style.display = "flex";
+  sections["functions-container"].style.visibility = "visibility";
 };
