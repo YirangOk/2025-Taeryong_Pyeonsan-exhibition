@@ -1,12 +1,5 @@
-
 let currentFontSize = 30;
 let currentLineHeight = 1.5;
-
-let lastHeightValue = 1.5;
-
-const select = document.getElementById("fontSelect");
-
-// const editableDiv = document.querySelector("div[contenteditable]");
 
 for (let i = 0; i < fonts.length; i++) {
   const font = fonts[i];
@@ -46,43 +39,6 @@ document.querySelectorAll(".editableDiv").forEach(div => {
   });
 });
 
-const textDirectionSelect = document.querySelector(".textDirection");
-const contentEditableDiv = document.querySelector("div[contenteditable]");
-
-function changetextDirection() {
-  const selectedIndex = textDirectionSelect.selectedIndex;
-  const textDirection = ["horizontal-tb", "vertical-rl"];
-
-  document.querySelectorAll(".editableDiv").forEach(div => {
-    div.style.writingMode = textDirection[selectedIndex];
-
-    if (textDirection[selectedIndex] === "vertical-rl") {
-      convertText(div);
-      div.style.overflowY = "hidden";
-      div.style.overflowX = "scroll";
-    } else {
-      revertGlyphs(div);
-      div.style.overflowY = "scroll";
-      div.style.overflowX = "hidden";
-    }
-
-    div.addEventListener("input", function (event) {
-      const inputText = event.data;
-
-      if (!isKorean(inputText) || isSpecialCharacter(inputText)) {
-        const savedSelection = saveSelection(div);
-        if (textDirection[selectedIndex] === "vertical-rl") {
-          convertText(div);
-        } else {
-          revertGlyphs(div);
-        }
-        restoreSelection(div, savedSelection);
-      }
-    });
-  });
-}
-
-
 function isKorean(text) {
   const koreanPattern = /[ㄱ-ㅎㅏ-ㅣ가-힣]/;
   return koreanPattern.test(text);
@@ -115,40 +71,6 @@ function restoreSelection(element, savedSelection) {
     );
   }
 }
-
-// editableDiv.addEventListener("click", function () {
-//   this.style.overflow = "auto";
-// });
-
-// document.addEventListener("click", function (e) {
-//   if (e.target !== editableDiv) {
-//     editableDiv.style.overflow = "hidden";
-//   }
-// });
-
-
-// function applyTextStyles() {
-//   const pxSize = currentFontSize + "px";
-//   const pxLineHeight = currentFontSize * currentLineHeight + "px";
-
-//   document.querySelectorAll(".editableDiv").forEach(div => {
-//     div.style.fontSize = pxSize;
-//     div.style.lineHeight = pxLineHeight;
-//   });
-// }
-// function changeFontSize(sizeValue) {
-//   currentFontSize = parseFloat(sizeValue);
-//   applyTextStyles();
-// }
-
-// function showValueHeight(heightValue) {
-//   currentLineHeight = parseFloat(heightValue);
-//   applyTextStyles();
-// }
-
-
-// let currentFontSize = 30;
-// let currentLineHeight = 1.5;
 
 function applyTextStyles() {
   const pxSize = currentFontSize + "px";
@@ -183,7 +105,8 @@ function showValueHeight(heightValue) {
   currentLineHeight = parseFloat(heightValue);
   applyTextStyles();
 }
+
 window.onload = function () {
-  applyTextStyles(); // 처음에 폰트 크기와 줄 간격 적용
-  changeFontFamily(); // 초기 폰트 설정
+  applyTextStyles();
+  changeFontFamily();
 };
