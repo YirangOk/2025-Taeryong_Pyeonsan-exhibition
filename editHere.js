@@ -70,7 +70,7 @@ function startDeleting() {
       editor.innerText = newText;
     });
     isSyncing = false;
-  }, 10); // 0.1초
+  }, 50); // 0.1초
 }
 
 // 텍스트 복원
