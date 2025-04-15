@@ -15,30 +15,42 @@
 
 <body class="body">
   <div class="functions-container">
-    <div class="functions">
-      <div class="range-container">
-        <div class="range-name">글자 크기</div>
-        <div class="range-box">
-          <input id="fontSizeRange" class="customRange" type="range" min="15" max="45" value="30" step="1"
-            oninput="changeFontSize(this.value)" />
-        </div>
-      </div>
-      <div class="range-container">
-        <div class="range-name">글줄이 조정</div>
-        <div class="range-box">
-          <input class="customRange" type="range" min="1" max="2.0" value="1.5" step="0.1"
-            oninput="changeLineHeight(this.value)">
-        </div>
-      </div>
-    </div>
     <div class="edit-container">
-      <div class="editableDiv" contenteditable="true" spellcheck="false"></div>
-      <div class="editableDiv" contenteditable="true" spellcheck="false"></div>
+      <div>
+        <div class="editableDiv" contenteditable="true" spellcheck="false">
+        </div>
+        <div>편산 Beta A</div>
+      </div>
+      <div>
+        <div class="editableDiv" contenteditable="true" spellcheck="false">
+        </div>
+        <div>편산 Beta B</div>
+      </div>
+      <div class="functions">
+        <div class="range-container">
+          <div class="range-name">크기 조절</div>
+          <div class="range-box">
+            <input id="fontSizeRange" class="customRange" type="range" min="1" max="4" value="2.5" step="0.1"
+              oninput="changeFontSize(this.value)" />
+          </div>
+        </div>
+        <div class="range-container">
+          <div class="range-name">글줄 사이</div>
+          <div class="range-box">
+            <input class="customRange" type="range" min="1" max="2.0" value="1.5" step="0.1"
+              oninput="changeLineHeight(this.value)">
+          </div>
+        </div>
+        <div class="range-container">
+          <div class="range-name">공간 보기</div>
+          <button id="toggleFontButton"></button>
+        </div>
+      </div>
+      <div>
+      </div>
     </div>
-    <div class="title-container">
-      <div>편산 A</div>
-      <div>편산 B</div>
-    </div>
+    <!-- <div class="title-container">
+    </div> -->
   </div>
 
   <div class="context-container">
@@ -281,59 +293,418 @@
       </p>
     </div>
   </div>
+  <div class="glyph-container">
+    <div class="glyphs">
+      <div class="glyphs-cover">
+        <div class="glyphs-title">
+          글리프 보기
+        </div>
+        <div class="preview"><span>걍</span></div>
+      </div>
+      <div class="glyphs-contants">
+        <div class="glyphs-title">한글</div>
+        <div class="hangle">
+          <div><span>걍</span></div>
+          <div><span>겯</span></div>
+          <div><span>괆</span></div>
+          <div><span>굻</span></div>
+          <div><span>귿</span></div>
+          <div><span>깜</span></div>
+          <div><span>껏</span></div>
+          <div><span>꽤</span></div>
+          <div><span>꽥</span></div>
+          <div><span>낚</span></div>
+          <div><span>내</span></div>
+          <div><span>녑</span></div>
+          <div><span>뇐</span></div>
+          <div><span>늉</span></div>
+          <div><span>닢</span></div>
+          <div><span>덕</span></div>
+          <div><span>돌</span></div>
+          <div><span>둬</span></div>
+          <div><span>땜</span></div>
+          <div><span>뛰</span></div>
+          <div><span>뜹</span></div>
+          <div><span>랭</span></div>
+          <div><span>렙</span></div>
+          <div><span>뢴</span></div>
+          <div><span>륜</span></div>
+          <div><span>맏</span></div>
+          <div><span>머</span></div>
+          <div><span>모</span></div>
+          <div><span>묻</span></div>
+          <div><span>믐</span></div>
+          <div><span>밧</span></div>
+          <div><span>벙</span></div>
+          <div><span>붕</span></div>
+          <div><span>뷔</span></div>
+          <div><span>뺄</span></div>
+          <div><span>뽈</span></div>
+          <div><span>삥</span></div>
+          <div><span>샵</span></div>
+          <div><span>셕</span></div>
+          <div><span>쇌</span></div>
+          <div><span>쉭</span></div>
+          <div><span>싸</span></div>
+          <div><span>쏵</span></div>
+          <div><span>쓴</span></div>
+          <div><span>압</span></div>
+          <div><span>어</span></div>
+          <div><span>엷</span></div>
+          <div><span>옻</span></div>
+          <div><span>욥</span></div>
+          <div><span>윅</span></div>
+          <div><span>잠</span></div>
+          <div><span>젊</span></div>
+          <div><span>종</span></div>
+          <div><span>줌</span></div>
+          <div><span>질</span></div>
+          <div><span>쨘</span></div>
+          <div><span>쫴</span></div>
+          <div><span>찍</span></div>
+          <div><span>챦</span></div>
+          <div><span>촘</span></div>
+          <div><span>췐</span></div>
+          <div><span>칫</span></div>
+          <div><span>컵</span></div>
+          <div><span>퀼</span></div>
+          <div><span>탐</span></div>
+          <div><span>텟</span></div>
+          <div><span>툼</span></div>
+          <div><span>틔</span></div>
+          <div><span>틜</span></div>
+          <div><span>파</span></div>
+          <div><span>평</span></div>
+          <div><span>팼</span></div>
+          <div><span>폡</span></div>
+          <div><span>퓐</span></div>
+          <div><span>함</span></div>
+          <div><span>헉</span></div>
+          <div><span>홍</span></div>
+          <div><span>흰</span></div>
+          <div><span>훑</span></div>
+          <div><span>휙</span></div>
+        </div>
+        <div class="glyphs-title">라틴 알파벳 A</div>
+        <div class="latin-A">
+          <div><span>A</span></div>
+          <div><span>B</span></div>
+          <div><span>C</span></div>
+          <div><span>D</span></div>
+          <div><span>E</span></div>
+          <div><span>F</span></div>
+          <div><span>G</span></div>
+          <div><span>H</span></div>
+          <div><span>I</span></div>
+          <div><span>J</span></div>
+          <div><span>K</span></div>
+          <div><span>L</span></div>
+          <div><span>M</span></div>
+          <div><span>N</span></div>
+          <div><span>O</span></div>
+          <div><span>P</span></div>
+          <div><span>Q</span></div>
+          <div><span>R</span></div>
+          <div><span>S</span></div>
+          <div><span>T</span></div>
+          <div><span>U</span></div>
+          <div><span>V</span></div>
+          <div><span>W</span></div>
+          <div><span>X</span></div>
+          <div><span>Y</span></div>
+          <div><span>Z</span></div>
+          <div><span>a</span></div>
+          <div><span>b</span></div>
+          <div><span>c</span></div>
+          <div><span>d</span></div>
+          <div><span>e</span></div>
+          <div><span>f</span></div>
+          <div><span>g</span></div>
+          <div><span>h</span></div>
+          <div><span>i</span></div>
+          <div><span>j</span></div>
+          <div><span>k</span></div>
+          <div><span>l</span></div>
+          <div><span>m</span></div>
+          <div><span>n</span></div>
+          <div><span>o</span></div>
+          <div><span>p</span></div>
+          <div><span>q</span></div>
+          <div><span>r</span></div>
+          <div><span>s</span></div>
+          <div><span>t</span></div>
+          <div><span>u</span></div>
+          <div><span>v</span></div>
+          <div><span>w</span></div>
+          <div><span>x</span></div>
+          <div><span>y</span></div>
+          <div><span>z</span></div>
+        </div>
+        <div class="glyphs-title">라틴 알파벳 B</div>
+        <div class="latin-B">
+          <div><span>A</span></div>
+          <div><span>B</span></div>
+          <div><span>C</span></div>
+          <div><span>D</span></div>
+          <div><span>E</span></div>
+          <div><span>F</span></div>
+          <div><span>G</span></div>
+          <div><span>H</span></div>
+          <div><span>I</span></div>
+          <div><span>J</span></div>
+          <div><span>K</span></div>
+          <div><span>L</span></div>
+          <div><span>M</span></div>
+          <div><span>N</span></div>
+          <div><span>O</span></div>
+          <div><span>P</span></div>
+          <div><span>Q</span></div>
+          <div><span>R</span></div>
+          <div><span>S</span></div>
+          <div><span>T</span></div>
+          <div><span>U</span></div>
+          <div><span>V</span></div>
+          <div><span>W</span></div>
+          <div><span>X</span></div>
+          <div><span>Y</span></div>
+          <div><span>Z</span></div>
+          <div><span>a</span></div>
+          <div><span>b</span></div>
+          <div><span>c</span></div>
+          <div><span>d</span></div>
+          <div><span>e</span></div>
+          <div><span>f</span></div>
+          <div><span>g</span></div>
+          <div><span>h</span></div>
+          <div><span>i</span></div>
+          <div><span>j</span></div>
+          <div><span>k</span></div>
+          <div><span>l</span></div>
+          <div><span>m</span></div>
+          <div><span>n</span></div>
+          <div><span>o</span></div>
+          <div><span>p</span></div>
+          <div><span>q</span></div>
+          <div><span>r</span></div>
+          <div><span>s</span></div>
+          <div><span>t</span></div>
+          <div><span>u</span></div>
+          <div><span>v</span></div>
+          <div><span>w</span></div>
+          <div><span>x</span></div>
+          <div><span>y</span></div>
+          <div><span>z</span></div>
+        </div>
+        <div class="glyphs-title">숫자와 기호</div>
+        <div class="numberandcharacter">
+          <div><span>1</span></div>
+          <div><span>2</span></div>
+          <div><span>3</span></div>
+          <div><span>4</span></div>
+          <div><span>5</span></div>
+          <div><span>6</span></div>
+          <div><span>7</span></div>
+          <div><span>8</span></div>
+          <div><span>9</span></div>
+          <div><span>0</span></div>
+          <div><span>1</span></div>
+          <div><span>2</span></div>
+          <div><span>3</span></div>
+          <div><span>4</span></div>
+          <div><span>5</span></div>
+          <div><span>6</span></div>
+          <div><span>7</span></div>
+          <div><span>8</span></div>
+          <div><span>9</span></div>
+          <div><span>0</span></div>
+          <div><span>『</span></div>
+          <div><span>』</span></div>
+          <div><span>#</span></div>
+          <div><span>$</span></div>
+          <div><span>%</span></div>
+          <div><span>&</span></div>
+          <div><span>'</span></div>
+          <div><span>(</span></div>
+          <div><span>)</span></div>
+          <div><span>*</span></div>
+          <div><span>+</span></div>
+          <div><span>-</span></div>
+          <div><span>/</span></div>
+          <div><span>:</span></div>
+          <div><span>;</span></div>
+          <div><span>•</span></div>
+          <div><span>‣</span></div>
+          <div><span>@</span></div>
+          <div><span>!</span></div>
+          <div><span>?</span></div>
+          <div><span>▒</span></div>
+          <div><span>■</span></div>
+          <div><span>▣</span></div>
+          <div><span>▲</span></div>
+          <div><span>△</span></div>
+          <div><span>●</span></div>
+          <div><span>◐</span></div>
+          <div><span>◑</span></div>
+          <div><span>★</span></div>
+          <div><span>☆</span></div>
+          <div><span>〈</span></div>
+          <div><span>〉</span></div>
+          <div><span>↤</span></div>
+          <div><span>↥</span></div>
+          <div><span>↦</span></div>
+          <div><span>↧</span></div>
+          <div><span>㉮</span></div>
+          <div><span>、</span></div>
+          <div><span>。</span></div>
+          <div><span>«</span></div>
+          <div><span>»</span></div>
+          <div><span>⁇</span></div>
+          <div><span>「</span></div>
+          <div><span>」</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="credit-container">
-    <div class="column title">
-      <div class="font-title">편산</div>
+  <div class="archive-container">
+    <h2>글꼴 정보.</h2>
+    <div class="credit">
+      <div class="font-info">
+        <div class="credit-table">
+          <div>편산</div>
+          <div>
+            <p>편산은 8분각 모듈 체계로 설계한 글꼴입니다.<br>
+              한글 944유닛을 기준으로 1/8에 해당하는 118유닛 단위로 모든 글리프가 설계되었습니다.</p>
+          </div>
+        </div>
+        <div class="credit-table">
+          <div>
+            <p>글꼴 포맷<br>
+              한글<br>
+              라틴 알파벳 및 숫자<br>
+              기타 약물</p>
+          </div>
+          <div>
+            <p>OTF<br>
+              2,350자<br>
+              82자<br>
+              377자</p>
+          </div>
+        </div>
+        <div class="credit-table">
+          <div>
+            <p class="section-title">사용권장 OS</p>
+          </div>
+          <div>
+            <p>window xp, mac os x 106 이상</p>
+          </div>
+        </div>
+        <div class="credit-table">
+          <div>
+            <p class="section-title">유의사항</p>
+          </div>
+          <div>
+            <p>OTF는 한글 2010버전 이상에서 사용 가능</p>
+          </div>
+        </div>
+      </div>
+      <div class="people-info">
+        <div class="credit-table">
+          <div>글꼴</div>
+          <div>김태룡</div>
+        </div>
+        <div class="credit-table">
+          <div>장소</div>
+          <div>XXPRESS</div>
+        </div>
+        <div class="credit-table">
+          <div>개발</div>
+          <div>옥이랑</div>
+        </div>
+        <div class="credit-table">
+          <div>공간</div>
+          <div>최원서</div>
+        </div>
+        <div class="credit-table">
+          <div>도움</div>
+          <div>강인구</div>
+        </div>
+        <div class="credit-list">
+          <div class="credit-table">
+            <div>감수</div>
+            개미그래픽스<br>
+            김형재<br>
+            로호타입<br>
+            박소영<br>
+            박연미<br>
+            신신<br>
+            에이오그래픽스<br>
+            오혜진<br>
+            이경수<br>
+            일상의실천<br>
+            제너럴그래픽스<br>
+            채병록<br>
+            6699프레스<br>
+            AABB<br>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="column people-info">
-      <h2>글꼴.</h2>
-      <div>김태룡</div>
-      <h2>장소.</h2>
-      <div>XXPRESS</div>
-      <h2>개발.</h2>
-      <div>옥이랑</div>
-      <h2>공간.</h2>
-      <div>최원서</div>
-      <h2>도움.</h2>
-      <div>강인구</div>
+    <div class="gallery">
+      <div>
+        <img src="/imgs/1.png" />
+        <p>이미지 1</p>
+      </div>
+      <div>
+        <img src="/imgs/2.png" />
+        <p>이미지 2</p>
+      </div>
+      <div>
+        <img src="/imgs/3.png" />
+        <p>이미지 3</p>
+      </div>
+      <div>
+        <img src="/imgs/4.png" />
+        <p>이미지 4</p>
+      </div>
+      <div>
+        <img src="/imgs/5.png" />
+        <p>이미지 5</p>
+      </div>
+      <div>
+        <img src="/imgs/6.png" />
+        <p>이미지 6</p>
+      </div>
+      <div>
+        <img src="/imgs/7.png" />
+        <p>이미지 7</p>
+      </div>
+      <div>
+        <img src="/imgs/8.png" />
+        <p>이미지 8</p>
+      </div>
+      <div>
+        <img src="/imgs/9.png" />
+        <p>이미지 9</p>
+      </div>
+      <div>
+        <img src="/imgs/10.png" />
+        <p>이미지 10</p>
+      </div>
     </div>
-    <div class="column credit-list">
-      <h2>감수.</h2>
-      <div>개미그래픽스</div>
-      <div>김형재</div>
-      <div>로호타입</div>
-      <div>박소영</div>
-      <div>박연미</div>
-      <div>신신</div>
-      <div>에이오그래픽스</div>
-      <div>오혜진</div>
-      <div>이경수</div>
-      <div>일상의실천</div>
-      <div>제너럴그래픽스</div>
-      <div>채병록</div>
-      <div>6699프레스</div>
-      <div>AABB</div>
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage">
+      <p id="caption"></p>
     </div>
-    <div class="column font-info">
-      <h2>글꼴 정보.</h2>
-      <p>편산은 8분각 모듈 체계로 설계한 글꼴입니다.<br>
-        한글 944유닛을 기준으로 1/8에 해당하는 118유닛 단위로 모든 글리프가 설계되었습니다.</p>
-      <p>글꼴 포맷: OTF<br>
-        한글: 2,350자<br>
-        라틴 알파벳 및 숫자: 82자<br>
-        기타 약물: 377자</p>
-      <p class="section-title">사용권장 OS.</p>
-      <p>window xp, mac os x 10.6 이상</p>
-      <p class="section-title">유의사항.</p>
-      <p>OTF는 한글 2010버전 이상에서 사용 가능</p>
-    </div>
+    
+  </div>
   </div>
   <div class="navigation-container">
     <div data-target="functions-container">편산 미리보기</div>
     <div data-target="context-container">편산의 흐름</div>
-    <div data-target="credit-container">사람들</div>
+    <div data-target="glyph-container">글리프 구성</div>
+    <div data-target="archive-container">기록과 수집</div>
   </div>
 
 </body>

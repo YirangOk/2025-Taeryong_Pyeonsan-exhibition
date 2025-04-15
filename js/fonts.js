@@ -73,8 +73,8 @@ function restoreSelection(element, savedSelection) {
 }
 
 function applyTextStyles() {
-  const pxSize = currentFontSize + "px";
-  const pxLineHeight = currentFontSize * currentLineHeight + "px";
+  const pxSize = currentFontSize + "vw";
+  const pxLineHeight = currentFontSize * currentLineHeight + "vw";
 
   const divs = document.querySelectorAll(".editableDiv");
 
