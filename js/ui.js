@@ -106,3 +106,39 @@ toggleButton.addEventListener("click", () => {
     }
   });
   
+  
+  navButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const target = button.getAttribute("data-target");
+  
+      // 1) 모든 섹션에서 overflow-y=scroll 인 요소는 scrollTop=0
+      Object.values(sections).forEach(sec => {
+        const computedStyle = window.getComputedStyle(sec);
+        if (computedStyle.overflowY === "scroll" || computedStyle.overflowY === "auto") {
+          sec.scrollTop = 0;
+        }
+        // 자식들도 확인해보고 싶으면 아래처럼
+        sec.querySelectorAll("*").forEach(child => {
+          const childStyle = window.getComputedStyle(child);
+          if (childStyle.overflowY === "scroll" || childStyle.overflowY === "auto") {
+            child.scrollTop = 0;
+          }
+        });
+      });
+  
+      // 2) 모든 섹션 숨기기
+      Object.values(sections).forEach(sec => {
+        sec.style.visibility = "hidden";
+      });
+  
+      // 3) 대상 섹션만 보이기
+      if (sections[target]) {
+        sections[target].style.visibility = "visible";
+      }
+  
+      // 4) body에 스크롤이 있다면, body도 0,0 (원하는 경우)
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  });
+  
