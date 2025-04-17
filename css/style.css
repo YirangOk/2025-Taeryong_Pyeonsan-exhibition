@@ -472,6 +472,10 @@ img {
   flex-grow: 1;
 }
 
+#imageModal {
+  display: flex;
+}
+
 .modal {
   display: flex;
   position: fixed;
