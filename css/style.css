@@ -185,12 +185,12 @@ body::selection {
   font-family: 'PyeonsanBetaAA', serif;
   /* font-kerning: normal; */
   writing-mode: tb;
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: calc(var(--font-size) * 1.3);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: min-content;
   gap: 1rem;
-  text-align: right;
+  text-align: center;
 }
 
 .range-name {
