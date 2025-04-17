@@ -5,24 +5,24 @@
 
 @font-face {
   font-family: 'PyeonsanAA';
-  src: url('/fonts/PyeonsanBetaAA_0-Regular.otf') format('opentype');
+  src: url('../fonts/PyeonsanBetaAA_0-Regular.otf') format('opentype');
 }
 
 
 @font-face {
   font-family: 'PyeonsanBB';
-  src: url('/fonts/PyeonsanBetaBB_0-Regular.otf') format('opentype');
+  src: url('../fonts/PyeonsanBetaBB_0-Regular.otf') format('opentype');
 }
 
 
 @font-face {
   font-family: 'PyeonsanBetaAA';
-  src: url('/fonts/PyeonsanBetaAA-Regular.otf') format('opentype');
+  src: url('../fonts/PyeonsanBetaAA-Regular.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'PyeonsanBetaBB';
-  src: url('/fonts/PyeonsanBetaBB-Regular.otf') format('opentype');
+  src: url('../fonts/PyeonsanBetaBB-Regular.otf') format('opentype');
 }
 
 :root {
