@@ -473,7 +473,7 @@ img {
 }
 
 #imageModal {
-  display: flex;
+  display: none;
 }
 
 .modal {
