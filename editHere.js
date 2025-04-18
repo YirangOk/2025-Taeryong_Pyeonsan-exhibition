@@ -30,12 +30,12 @@ let lastInputTime = Date.now();
 let deleteInterval = null;
 let monitoringInterval = null;
 
-// 초기 입력
+
 editors.forEach(editor => {
   editor.innerText = originalText;
 });
 
-// 입력 동기화
+
 let isSyncing = false;
 editors.forEach((editor, index) => {
   editor.addEventListener('input', () => {
@@ -54,7 +54,7 @@ editors.forEach((editor, index) => {
   });
 });
 
-// 삭제 시작
+
 function startDeleting() {
   clearInterval(deleteInterval);
 
@@ -70,10 +70,10 @@ function startDeleting() {
       editor.innerText = newText;
     });
     isSyncing = false;
-  }, 50); // 0.1초
+  }, 10); 
 }
 
-// 텍스트 복원
+
 function resetToOriginalText() {
   clearInterval(deleteInterval);
   isSyncing = true;
@@ -81,20 +81,62 @@ function resetToOriginalText() {
     editor.innerText = originalText;
   });
   isSyncing = false;
-  lastInputTime = Date.now(); // 복원되면 타이머 리셋
+  lastInputTime = Date.now(); 
 }
 
-// 1분 이상 입력 없을 시 감시
+
 monitoringInterval = setInterval(() => {
   const now = Date.now();
-  if (now - lastInputTime > 60000) { // 1분 경과
+  if (now - lastInputTime > 60000) { 
     startDeleting();
   }
-}, 10000);
+}, 1000);
 
+const originalFontSize = 2.5; 
+const originalLineHeight = 1.5;
+let typingInterval = null;
+
+function resetToOriginalText() {
+  clearInterval(deleteInterval);
+  clearInterval(typingInterval);
+  isSyncing = true;
+
+  editors.forEach(editor => {
+    editor.innerText = "";
+    editor.style.setProperty('font-size', originalFontSize + 'vw', 'important');
+    editor.style.setProperty('line-height', originalLineHeight, 'important');
+  });
+
+  currentFontSize = originalFontSize;
+  currentLineHeight = originalLineHeight;
+
+  document.getElementById("fontSizeRange").value = originalFontSize;
+  document.querySelectorAll('input[type="range"]')[1].value = originalLineHeight;
+
+  let index = 0;
+  typingInterval = setInterval(() => {
+    if (index >= originalText.length) {
+      clearInterval(typingInterval);
+      isSyncing = false;
+      return;
+    }
+    const char = originalText[index];
+    editors.forEach(editor => {
+      editor.innerText += char;
+    });
+    index++;
+  }, 10);
+
+  lastInputTime = Date.now();
+}
+
+
+currentFontSize = originalFontSize;
+currentLineHeight = originalLineHeight;
+applyTextStyles(); 
 
 window.onload = function () {
-  // insertText();
+  
   changetextDirection();
   syncEditableDivs();
 };

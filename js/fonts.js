@@ -1,5 +1,7 @@
-let currentFontSize = 30;
+
+
 let currentLineHeight = 1.5;
+let currentFontSize = 2.5; 
 
 for (let i = 0; i < fonts.length; i++) {
   const font = fonts[i];
@@ -73,20 +75,15 @@ function restoreSelection(element, savedSelection) {
 }
 
 function applyTextStyles() {
-  const pxSize = currentFontSize + "vw";
-  const pxLineHeight = currentFontSize * currentLineHeight + "vw";
+  const fontSizeVW = currentFontSize + "vw";
+  const lineHeight = currentLineHeight;
 
-  const divs = document.querySelectorAll(".editableDiv");
-
-  console.log("적용 div 개수:", divs.length);
-
-  divs.forEach(div => {
-    div.style.fontSize = pxSize;
-    div.style.lineHeight = pxLineHeight;
-    div.style.setProperty('font-size', pxSize, 'important');
-    div.style.setProperty('line-height', pxLineHeight, 'important');
+  document.querySelectorAll(".editableDiv").forEach(div => {
+    div.style.setProperty("font-size", fontSizeVW, "important");
+    div.style.setProperty("line-height", lineHeight, "important");
   });
 }
+
 
 function changeFontSize(sizeValue) {
   console.log("폰트크기:", sizeValue);
