@@ -145,6 +145,7 @@ body::selection {
   overflow: auto;
   width: auto;
   height: 80vh;
+  white-space: pre-wrap;
 }
 
 .editableDiv:focus {

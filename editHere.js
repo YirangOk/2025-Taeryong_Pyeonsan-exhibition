@@ -18,7 +18,8 @@ const fonts = [{
   }];
 
 
-const originalText = `안녕하세요. 이 곳에서는 한글 글꼴
+const originalText = 
+`안녕하세요. 이 곳에서는 한글 글꼴
 「편산」을 타이핑할 수 있습니다.
 타이포그래피
 typography
@@ -31,8 +32,9 @@ let deleteInterval = null;
 let monitoringInterval = null;
 
 
+const htmlText = originalText.replace(/\n/g, "<br>");
 editors.forEach(editor => {
-  editor.innerText = originalText;
+  editor.innerHTML = htmlText;
 });
 
 
