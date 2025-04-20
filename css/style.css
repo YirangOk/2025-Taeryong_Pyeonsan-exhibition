@@ -216,8 +216,8 @@ input[type="range"].customRange {
 input[type="range"].customRange::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   background: black;
   border-radius: 50%;
   cursor: pointer;
