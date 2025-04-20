@@ -1,7 +1,7 @@
 
 
 let currentLineHeight = 1.5;
-let currentFontSize = 2.5; 
+let currentFontSize = 3; 
 
 for (let i = 0; i < fonts.length; i++) {
   const font = fonts[i];
