@@ -36,16 +36,24 @@ toggleButton.addEventListener("click", () => {
   if (!fontSwitched) {
     editableDivs[0].style.fontFamily = "'PyeonsanAA', serif";
     editableDivs[1].style.fontFamily = "'PyeonsanBB', serif";
+
+    toggleButton.style.backgroundColor = "#ffffff";
+    toggleButton.style.color = "#000000";
+    toggleButton.style.border = "1px solid #000000";
   } else {
     editableDivs[0].style.fontFamily = "'PyeonsanBetaAA', serif";
     editableDivs[1].style.fontFamily = "'PyeonsanBetaBB', serif";
+
+    toggleButton.style.backgroundColor = "#000000";
+    toggleButton.style.color = "#ffffff";
+    toggleButton.style.border = "1px solid #000000";
   }
 
   fontSwitched = !fontSwitched;
 });
 
   const previewTarget = document.querySelector(".preview span"); 
-  const glyphDivs = document.querySelectorAll(".glyphs-contants .hangle div, .latin-A div, .latin-B div, .numberandcharacter div");
+  const glyphDivs = document.querySelectorAll(".glyphs-contants .glyphs-characters div");
   
   glyphDivs.forEach(glyph => {
     glyph.addEventListener("mouseenter", () => {
