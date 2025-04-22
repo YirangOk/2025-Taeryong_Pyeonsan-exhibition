@@ -29,7 +29,7 @@
   --main-color: black;
   --sub-color: white;
   --basic-margin: 10px;
-  --font-size: clamp(16px, 1.25vw, 24px);
+  --font-size: clamp(16px, 1.75vw, 24px);
 }
 
 /* Scrollbar Styling */
@@ -176,44 +176,81 @@ body::selection {
 
 .functions {
   font-family: 'PyeonsanBetaAA', serif;
-  writing-mode: tb;
-  font-size: calc(var(--font-size) * 1.3);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   width: min-content;
   gap: 1rem;
   text-align: center;
+  flex-direction: column;
 }
 
 .range-name {
+  writing-mode: tb;
   font-weight: bold;
   color: var(--main-color);
   word-break: keep-all;
   white-space: nowrap;
-
 }
 
 .range-container {
   display: flex;
-  flex-direction: row;
-  padding-bottom: 0.5rem;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
+  /* width: 100%; */
+  height: 100%;
+  align-items: center;
 }
 
-.range-box {}
+.slider-wrapper {
+  transform: rotate(-90deg) !important;
+  transform-origin: center;
+  /* width: 200px; */
+  /* 세로 슬라이더 전체 길이 */
+  /* height: 40px; */
+  /* 슬라이더 thumb 여유 */
+  width: 80px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
-input[type="range"].customRange {
+.customRange {
   -webkit-appearance: none;
   appearance: none;
+  width: 100%;
+  /* 슬라이더 track 길이 (회전 전 기준) */
+  height: 1.1px;
   background: black;
-  width: 1.1px;
+  border-radius: 2px;
   cursor: pointer;
-  rotate: 180deg;
-  height: 80px;
 }
 
-input[type="range"].customRange::-webkit-slider-thumb {
+/* Chrome & Safari */
+.customRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  /* margin-top: -8px; */
+  cursor: pointer;
+}
+
+
+/* .customRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+} */
+
+/* input[type="range"].customRange::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
@@ -221,23 +258,21 @@ input[type="range"].customRange::-webkit-slider-thumb {
   background: black;
   border-radius: 50%;
   cursor: pointer;
-}
+} */
 
-input[type="range"].customRange::-webkit-slider-thumb:hover {
-  background: #555;
+input[type="range"].customRange::-webkit-slider-thumb:hover,
+.functions-container button:hover {
+  background: #adadad;
 }
 
 .functions-container button {
   all: unset;
   background-color: black;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
 }
 
-.functions-container button:hover {
-  background: #555;
-}
 
 /* Headings */
 h1,
@@ -285,7 +320,7 @@ h2+h3 {
 
 .context-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.25fr;
   padding: 1rem;
   height: 90vh;
   overflow-y: scroll;
@@ -294,7 +329,18 @@ h2+h3 {
 
 .context-container div {
   display: flex;
+  flex-direction: column;
   /* padding-bottom: 5rem; */
+}
+
+.context-container div .caption{
+  font-size: calc(var(--font-size) * 0.75);
+  padding-bottom: 0.75rem;
+  padding-top: 0.1rem;
+}
+
+.context-container div img {
+  border: 1px solid rgb(234, 234, 234);
 }
 
 /* Article container */
@@ -326,7 +372,9 @@ img {
 .glyphs-contants {
   display: flex;
   flex-direction: column;
-  padding-left: 40%;
+  padding-left: 45%;
+  position: absolute;
+  right: 0;
 }
 
 .credit {
@@ -345,7 +393,7 @@ img {
   font-size: calc(var(--font-size) * 3);
   outline: 1.1px solid black;
   outline-offset: -0.85px;
-  height: calc(var(--font-size)*4);
+  height: calc(var(--font-size)*3.7);
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
@@ -399,6 +447,17 @@ img {
   position: fixed;
 }
 
+.latin-A {
+  font-family: 'PyeonsanAA', serif;
+}
+
+.latin-B {
+  font-family: 'PyeonsanBB', serif;
+}
+
+.numbers{
+  font-variant-numeric: oldstyle-nums;
+}
 .glyphs-title:nth-child(1),
 .glyphs-title:nth-child(2) {
   padding: 0rem 0 1rem 0;
@@ -494,4 +553,10 @@ img {
   color: white;
   margin-top: 1rem;
   font-size: var(--font-size);
+}
+
+@media (min-width: 2000px) {
+  :root {
+    --font-size: 2vw;
+  }
 }

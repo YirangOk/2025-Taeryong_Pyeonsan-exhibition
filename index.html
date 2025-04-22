@@ -29,16 +29,18 @@
       <div class="functions">
         <div class="range-container">
           <div class="range-name">크기조절</div>
-          <div class="range-box">
+          <div class="range-box slider-wrapper">
             <input id="fontSizeRange" class="customRange" type="range" min="2" max="25" value="3" step="0.1"
               oninput="changeFontSize(this.value)" />
+              <!-- <button id="toggleFontSizeButton"></button> -->
           </div>
         </div>
         <div class="range-container">
           <div class="range-name">글줄사이</div>
-          <div class="range-box">
+          <div class="range-box slider-wrapper">
             <input class="customRange" type="range" min="1" max="2.0" value="1.5" step="0.1"
               oninput="changeLineHeight(this.value)">
+              <!-- <button id="toggleFontHeightButton"></button> -->
           </div>
         </div>
         <div class="range-container">
@@ -55,31 +57,31 @@
 
   <div class="context-container">
     <div class="context-container-images">
-      <div><img src="imgs/image_1.jpg" alt=""></div>
-      <div><img src="imgs/image_2.jpg" alt=""></div>
-      <div><img src="imgs/image_3.jpg" alt=""></div>
-      <div><img src="imgs/image_4.jpg" alt=""></div>
-      <div><img src="imgs/image_5.jpg" alt=""></div>
-      <div><img src="imgs/image_6.jpg" alt=""></div>
-      <div><img src="imgs/image_7.jpg" alt=""></div>
-      <div><img src="imgs/image_8.jpg" alt=""></div>
-      <div><img src="imgs/image_9.jpg" alt=""></div>
-      <div><img src="imgs/image_10.jpg" alt=""></div>
-      <div><img src="imgs/image_11.jpg" alt=""></div>
-      <div><img src="imgs/image_12.jpg" alt=""></div>
-      <div><img src="imgs/image_13.jpg" alt=""></div>
-      <div><img src="imgs/image_14.jpg" alt=""></div>
-      <div><img src="imgs/image_15.jpg" alt=""></div>
-      <div><img src="imgs/image_16.jpg" alt=""></div>
-      <div><img src="imgs/image_17.jpg" alt=""></div>
-      <div><img src="imgs/image_18.jpg" alt=""></div>
-      <div><img src="imgs/image_19.jpg" alt=""></div>
-      <div><img src="imgs/image_20.jpg" alt=""></div>
-      <div><img src="imgs/image_21.jpg" alt=""></div>
-      <div><img src="imgs/image_22.jpg" alt=""></div>
-      <div><img src="imgs/image_23.jpg" alt=""></div>
-      <div><img src="imgs/image_24.jpg" alt=""></div>
-      <div><img src="imgs/image_25.jpg" alt=""></div>
+      <div><img src="imgs/image_1.jpg" alt=""><p class="caption">[그림 1] 낫표와 따옴표</p></div>
+      <div><img src="imgs/image_2.jpg" alt=""><p class="caption">[그림 2] 한글과 라틴 알파벳의 너비 비교</p></div>
+      <div><img src="imgs/image_3.jpg" alt=""><p class="caption">[그림 3] 한글의 조합과 시각보정</p></div>
+      <div><img src="imgs/image_4.jpg" alt=""><p class="caption">[그림 4] 한글의 조합과 시각보정2</p></div>
+      <div><img src="imgs/image_5.jpg" alt=""><p class="caption">[그림 5] 고정틀의 특징</p></div>
+      <div><img src="imgs/image_6.jpg" alt=""><p class="caption">[그림 6] 고정틀과 띄어쓰기1</p></div>
+      <div><img src="imgs/image_7.jpg" alt=""><p class="caption">[그림 7] 고정틀과 띄어쓰기2</p></div>
+      <div><img src="imgs/image_8.jpg" alt=""><p class="caption">[그림 8] 8분 모듈</p></div>
+      <div><img src="imgs/image_9.jpg" alt=""><p class="caption">[그림 9] 8분 모듈 수치화</p></div>
+      <div><img src="imgs/image_10.jpg" alt=""><p class="caption">[그림 10] 한글과 944unit</p></div>
+      <div><img src="imgs/image_11.jpg" alt=""><p class="caption">[그림 11] 한자, 한글, 라틴 알파벳의 공간</p></div>
+      <div><img src="imgs/image_12.jpg" alt=""><p class="caption">[그림 12] 8분 모듈에 따른 문장부호 디자인1</p></div>
+      <div><img src="imgs/image_13.jpg" alt=""><p class="caption">[그림 13] 8분 모듈에 따른 문장부호 디자인2</p></div>
+      <div><img src="imgs/image_14.jpg" alt=""><p class="caption">[그림 14] 조판점검1</p></div>
+      <div><img src="imgs/image_15.jpg" alt=""><p class="caption">[그림 14] 조판점검1(호버)</p></div>
+      <div><img src="imgs/image_16.jpg" alt=""><p class="caption">[그림 15] 조판점검2</p></div>
+      <div><img src="imgs/image_17.jpg" alt=""><p class="caption">[그림 15] 조판점검2(호버)</p></div>
+      <div><img src="imgs/image_18.jpg" alt=""><p class="caption">[그림 16] 틀 맞추기</p></div>
+      <div><img src="imgs/image_19.jpg" alt=""><p class="caption">[그림 17] 8분 모듈 라틴 알파벳 A, B</p></div>
+      <div><img src="imgs/image_20.jpg" alt=""><p class="caption">[그림 18] 8분 모듈 라틴 알파벳 A, B2</p></div>
+      <div><img src="imgs/image_21.jpg" alt=""><p class="caption">[그림 19] 한자와 라틴 알파벳 섞여짜기</p></div>
+      <div><img src="imgs/image_22.jpg" alt=""><p class="caption">[그림 20] 조판 예시1</p></div>
+      <div><img src="imgs/image_23.jpg" alt=""><p class="caption">[그림 21] 조판 예시2</p></div>
+      <div><img src="imgs/image_24.jpg" alt=""><p class="caption">[그림 22] 조판 예시3</p></div>
+      <div><img src="imgs/image_25.jpg" alt=""><p class="caption">[그림 23] 매치포인트</p></div>      
     </div>
 
     <div class="research-article">
@@ -274,8 +276,68 @@
         <div class="preview"><span>걍</span></div>
       </div>
       <div class="glyphs-contants">
+        <div class="glyphs-title">라틴 알파벳 A</div>
+        <div class="glyphs-characters latin-A">
+          <div><span>A</span></div>
+          <div><span>B</span></div>
+          <div><span>C</span></div>
+          <div><span>D</span></div>
+          <div><span>E</span></div>
+          <div><span>F</span></div>
+          <div><span>G</span></div>
+          <div><span>H</span></div>
+          <div><span>I</span></div>
+          <div><span>J</span></div>
+          <div><span>K</span></div>
+          <div><span>L</span></div>
+          <div><span>M</span></div>
+          <div><span>N</span></div>
+          <div><span>O</span></div>
+          <div><span>P</span></div>
+          <div><span>Q</span></div>
+          <div><span>R</span></div>
+          <div><span>S</span></div>
+          <div><span>T</span></div>
+          <div><span>U</span></div>
+          <div><span>V</span></div>
+          <div><span>W</span></div>
+          <div><span>X</span></div>
+          <div><span>Y</span></div>
+          <div><span>Z</span></div>
+
+          <div><span>a</span></div>
+          <div><span>b</span></div>
+          <div><span>c</span></div>
+          <div><span>d</span></div>
+          <div><span>e</span></div>
+          <div><span>f</span></div>
+          <div><span>g</span></div>
+          <div><span>h</span></div>
+          <div><span>i</span></div>
+          <div><span>j</span></div>
+          <div><span>k</span></div>
+          <div><span>l</span></div>
+          <div><span>m</span></div>
+          <div><span>n</span></div>
+          <div><span>o</span></div>
+          <div><span>p</span></div>
+          <div><span>q</span></div>
+          <div><span>r</span></div>
+          <div><span>s</span></div>
+          <div><span>t</span></div>
+          <div><span>u</span></div>
+          <div><span>v</span></div>
+          <div><span>w</span></div>
+          <div><span>x</span></div>
+          <div><span>y</span></div>
+          <div><span>z</span></div>
+          <div><span>ﬂ</span></div>
+          <div><span>ﬁ</span></div>
+          <div><span>ﬂ</span></div>
+        </div>
+
         <div class="glyphs-title">라틴 알파벳 B</div>
-        <div class="glyphs-characters">
+        <div class="glyphs-characters latin-B">
           <div><span>A</span></div>
           <div><span>B</span></div>
           <div><span>C</span></div>
@@ -335,7 +397,7 @@
         </div>
 
         <div class="glyphs-title">숫자</div>
-        <div class="glyphs-characters">
+        <div class="glyphs-characters numbers">
           <div><span>0</span></div>
           <div><span>1</span></div>
           <div><span>2</span></div>
@@ -3063,7 +3125,7 @@
             <p class="section-title">사용권장 OS</p>
           </div>
           <div>
-            <p>window xp, mac os x 106 이상</p>
+            <p>window xp, mac os x 10.6 이상</p>
           </div>
         </div>
         <div class="credit-table">
