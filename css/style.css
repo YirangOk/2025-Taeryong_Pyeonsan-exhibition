@@ -466,6 +466,11 @@ img {
   aspect-ratio: 1;
   justify-content: center;
   align-items: center;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-emoji: text;
+  unicode-bidi: isolate;
+  direction: ltr;
 }
 
 .preview span {
