@@ -311,7 +311,6 @@ h3 {
 h2+h3 {
   padding-top: 0;
 }
-
 /* functions containers */
 .functions-container,
 .context-container,
@@ -358,6 +357,11 @@ h2+h3 {
 
 .context-container div img {
   border: 1px solid rgb(234, 234, 234);
+  cursor: pointer;
+}
+
+.context-container div img:hover {
+  border-color: aqua;
 }
 
 #image14, #image15 {
