@@ -25,11 +25,23 @@
   src: url('../fonts/PyeonsanBetaBB-Regular.otf') format('opentype');
 }
 
+@keyframes flash {
+  0%   { opacity: 1; }
+  20%  { opacity: 0; }
+  40%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.flash-highlight {
+  animation: flash 3s ease;
+}
+
 :root {
   --main-color: black;
   --sub-color: white;
   --basic-margin: 10px;
-  --font-size: clamp(16px, 1.75vw, 24px);
+  --font-size: clamp(16px, 1.6vw, 24px);
 }
 
 /* Scrollbar Styling */
@@ -136,6 +148,11 @@ body::selection {
   grid-template-columns: 1fr 1fr 0fr;
   gap: 2rem;
   width: 100%;
+}
+
+.editable-title{
+  padding-top: 0.5rem;
+  font-size: calc(var(--font-size) * 0.75);
 }
 
 /* Editable Div */
@@ -280,7 +297,7 @@ h2,
 h4,
 h5,
 h6 {
-  padding: 1rem 0 1rem 0;
+  padding: 5rem 0 2rem 0;
   font-weight: normal;
   font-size: var(--font-size);
 }
@@ -320,7 +337,7 @@ h2+h3 {
 
 .context-container {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: 1fr 1fr;
   padding: 1rem;
   height: 90vh;
   overflow-y: scroll;
@@ -343,10 +360,21 @@ h2+h3 {
   border: 1px solid rgb(234, 234, 234);
 }
 
+#image14, #image15 {
+  border-color: aqua;
+} 
+
+#image14:hover, #image15:hover {
+  border-color:  rgb(234, 234, 234);
+} 
+
 /* Article container */
 .research-article {
   display: flex;
   flex-direction: column;
+}
+.research-article span{
+  background-color: rgb(234, 234, 234);
 }
 
 .context-container-images {
@@ -476,10 +504,6 @@ img {
   overflow-y: scroll;
   overflow-x: hidden;
   gap: 1rem;
-}
-
-.archive-container h2 {
-  padding: 0;
 }
 
 .font-info {
