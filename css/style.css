@@ -95,7 +95,7 @@ body {
   font-size: var(--font-size);
   line-height: 1.65;
   word-break: keep-all;
-  color: rgb(255, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
 body::selection {
