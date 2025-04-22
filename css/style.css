@@ -83,7 +83,7 @@ body {
 }
 
 /* Body layout */
-.body {
+body {
   font-family: 'PyeonsanAA', serif;
   display: flex;
   flex-direction: column;
@@ -95,7 +95,7 @@ body {
   font-size: var(--font-size);
   line-height: 1.65;
   word-break: keep-all;
-  color: black;
+  color: rgb(255, 0, 0);
 }
 
 body::selection {
@@ -437,6 +437,11 @@ img {
 
 .glyphs-characters div span {
   transform: translateY(-0.3rem);
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-emoji: text;
+  unicode-bidi: isolate;
+  direction: ltr;
 }
 
 .glyphs-characters div:hover {
