@@ -56,23 +56,24 @@ editors.forEach((editor, index) => {
   });
 });
 
+function startDeleting () {
+  cancelAnimationFrame(startDeleting.raf);
+  let last = performance.now();
 
-function startDeleting() {
-  clearInterval(deleteInterval);
+  function frame (now) {
+    if (now - last >= 10) {            // 0.01 s 간격
+      last = now;
+      const txt = editors[0].innerText;
+      if (!txt.length) { resetToOriginalText(); return; }
 
-  deleteInterval = setInterval(() => {
-    const currentText = editors[0].innerText;
-    if (currentText.length === 0) {
-      resetToOriginalText();
-      return;
+      const newTxt = txt.slice(0, -1);
+      isSyncing = true;
+      editors.forEach(ed => ed.innerText = newTxt);
+      isSyncing = false;
     }
-    const newText = currentText.slice(0, -1);
-    isSyncing = true;
-    editors.forEach(editor => {
-      editor.innerText = newText;
-    });
-    isSyncing = false;
-  }, 10); 
+    startDeleting.raf = requestAnimationFrame(frame);
+  }
+  startDeleting.raf = requestAnimationFrame(frame);
 }
 
 
@@ -98,40 +99,43 @@ const originalFontSize = 3;
 const originalLineHeight = 1.5;
 let typingInterval = null;
 
-function resetToOriginalText() {
+const navButtons = document.querySelectorAll('.navigation-container>div');
+
+/* ―― 1.  중복된 resetToOriginalText() 정의는 **아래 하나**만 남긴다 ―― */
+function resetToOriginalText(){
   clearInterval(deleteInterval);
   clearInterval(typingInterval);
-  isSyncing = true;
 
-  editors.forEach(editor => {
-    editor.innerText = "";
-    editor.style.setProperty('font-size', originalFontSize + 'vw', 'important');
-    editor.style.setProperty('line-height', originalLineHeight, 'important');
+  editors.forEach(ed=>{
+    ed.innerText = "";
+    ed.style.setProperty('font-size', originalFontSize + 'vw','important');
+    ed.style.setProperty('line-height', originalLineHeight,'important');
   });
 
-  currentFontSize = originalFontSize;
-  currentLineHeight = originalLineHeight;
+  document.getElementById('fontSizeRange').value              = originalFontSize;
+  document.querySelectorAll('input[type="range"]')[1].value   = originalLineHeight;
 
-  document.getElementById("fontSizeRange").value = originalFontSize;
-  document.querySelectorAll('input[type="range"]')[1].value = originalLineHeight;
-
-  let index = 0;
-  typingInterval = setInterval(() => {
-    if (index >= originalText.length) {
-      clearInterval(typingInterval);
-      isSyncing = false;
-      return;
-    }
-    const char = originalText[index];
-    editors.forEach(editor => {
-      editor.innerText += char;
-    });
-    index++;
-  }, 10);
+  let i = 0;
+  typingInterval = setInterval(()=>{
+    if(i >= originalText.length){ clearInterval(typingInterval); return; }
+    const ch = originalText[i++];
+    editors.forEach(ed=> ed.innerText += ch);
+  },10);
 
   lastInputTime = Date.now();
 }
 
+/* ―― 2.  네비게이션을 누를 때마다 텍스트를 초기 상태로 되돌린다 ―― */
+navButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target = btn.getAttribute('data-target');
+
+    /* glyph-container를 떠날 때에만 초기화하려면 ↓ 조건 주석 해제
+       if(target !== 'glyph-container') resetToOriginalText();
+    */
+    resetToOriginalText();             // 모든 탭 전환에 대해 초기화
+  });
+});
 
 currentFontSize = originalFontSize;
 currentLineHeight = originalLineHeight;
