@@ -348,13 +348,16 @@ h2+h3 {
 .context-container div {
   display: flex;
   flex-direction: column;
+  padding-bottom: calc(var(--basic-padding)*5);
 }
 
 .context-container div .caption {
   font-size: calc(var(--font-size) * 0.75);
-  padding-bottom: 0.75rem;
-  padding-top: 0.1rem;
+  padding-bottom: calc(var(--font-size) * 0.5);
+  padding-top: calc(var(--font-size) * 0.1);
 }
+
+.context-container div
 
 .context-container div img {
   border: var(--border) solid var(--gray);
@@ -421,7 +424,7 @@ h2+h3 {
 
 .glyphs-characters {
   display: flex;
-  padding-bottom: 3rem;
+  padding-bottom: calc(var(--basic-padding)*5) !important;
   flex-wrap: wrap;
 }
 

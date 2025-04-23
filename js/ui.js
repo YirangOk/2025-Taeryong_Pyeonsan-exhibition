@@ -121,7 +121,7 @@ navButtons.forEach(button => {
   });
 
 function initGallery() {
-  const rowH = window.innerWidth > 1920 ? 600 : 200;   // 1920 px 초과면 500
+  const rowH = window.innerWidth > 1920 ? 700 : 300;   // 1920 px 초과면 500
   const margin = window.innerWidth > 1920 ? 20 : 10;
 
   $('.gallery').justifiedGallery('destroy');           // 이전 인스턴스 제거
