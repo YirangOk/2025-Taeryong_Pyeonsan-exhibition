@@ -11,6 +11,9 @@
   <meta name="copyright" content="withok.kr">
   <meta name="abstract" content="폰트 디자이너를 위한 미리보기 도구.">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js"></script>
 </head>
 
 <body class="body">
@@ -32,7 +35,7 @@
           <div class="range-box slider-wrapper">
             <input id="fontSizeRange" class="customRange" type="range" min="2" max="25" value="3" step="0.1"
               oninput="changeFontSize(this.value)" />
-              <!-- <button id="toggleFontSizeButton"></button> -->
+            <!-- <button id="toggleFontSizeButton"></button> -->
           </div>
         </div>
         <div class="range-container">
@@ -40,7 +43,7 @@
           <div class="range-box slider-wrapper">
             <input class="customRange" type="range" min="1" max="2.0" value="1.5" step="0.1"
               oninput="changeLineHeight(this.value)">
-              <!-- <button id="toggleFontHeightButton"></button> -->
+            <!-- <button id="toggleFontHeightButton"></button> -->
           </div>
         </div>
         <div class="range-container">
@@ -57,29 +60,75 @@
 
   <div class="context-container">
     <div class="context-container-images">
-      <div><img id="image1" src="imgs/image_1.jpg" alt=""><p class="caption">[그림 1] 낫표와 따옴표</p></div>
-      <div><img id="image2" src="imgs/image_2.jpg" alt=""><p class="caption">[그림 2] 한글과 라틴 알파벳의 너비 비교</p></div>
-      <div><img id="image3" src="imgs/image_3.jpg" alt=""><p class="caption">[그림 3] 한글의 조합과 시각보정</p></div>
-      <div><img id="image4" src="imgs/image_4.jpg" alt=""><p class="caption">[그림 4] 한글의 조합과 시각보정2</p></div>
-      <div><img id="image5" src="imgs/image_5.jpg" alt=""><p class="caption">[그림 5] 고정틀의 특징</p></div>
-      <div><img id="image6" src="imgs/image_6.jpg" alt=""><p class="caption">[그림 6] 고정틀과 띄어쓰기1</p></div>
-      <div><img id="image7" src="imgs/image_7.jpg" alt=""><p class="caption">[그림 7] 고정틀과 띄어쓰기2</p></div>
-      <div><img id="image8" src="imgs/image_8.jpg" alt=""><p class="caption">[그림 8] 8분 모듈</p></div>
-      <div><img id="image9" src="imgs/image_9.jpg" alt=""><p class="caption">[그림 9] 8분 모듈 수치화</p></div>
-      <div><img id="image10" src="imgs/image_10.jpg" alt=""><p class="caption">[그림 10] 한글과 944unit</p></div>
-      <div><img id="image11" src="imgs/image_11.jpg" alt=""><p class="caption">[그림 11] 한자, 한글, 라틴 알파벳의 공간</p></div>
-      <div><img id="image12" src="imgs/image_12.jpg" alt=""><p class="caption">[그림 12] 8분 모듈에 따른 문장부호 디자인1</p></div>
-      <div><img id="image13" src="imgs/image_13.jpg" alt=""><p class="caption">[그림 13] 8분 모듈에 따른 문장부호 디자인2</p></div>
-      <div><img id="image14" src="imgs/image_14.jpg" alt=""><p class="caption">[그림 14] 조판점검1</p></div>
-      <div><img id="image15" src="imgs/image_16.jpg" alt=""><p class="caption">[그림 15] 조판점검2</p></div>
-      <div><img id="image16" src="imgs/image_18.jpg" alt=""><p class="caption">[그림 16] 틀 맞추기</p></div>
-      <div><img id="image17" src="imgs/image_19.jpg" alt=""><p class="caption">[그림 17] 8분 모듈 라틴 알파벳 A, B</p></div>
-      <div><img id="image18" src="imgs/image_20.jpg" alt=""><p class="caption">[그림 18] 8분 모듈 라틴 알파벳 A, B2</p></div>
-      <div><img id="image19" src="imgs/image_21.jpg" alt=""><p class="caption">[그림 19] 한자와 라틴 알파벳 섞여짜기</p></div>
-      <div><img id="image20" src="imgs/image_22.jpg" alt=""><p class="caption">[그림 20] 조판 예시1</p></div>
-      <div><img id="image21" src="imgs/image_23.jpg" alt=""><p class="caption">[그림 21] 조판 예시2</p></div>
-      <div><img id="image22" src="imgs/image_24.jpg" alt=""><p class="caption">[그림 22] 조판 예시3</p></div>
-      <div><img id="image23" src="imgs/image_25.jpg" alt=""><p class="caption">[그림 23] 매치포인트</p></div>      
+      <div><img id="image1" src="imgs/context/image_1.jpg" alt="">
+        <p class="caption">[그림 1] 낫표와 따옴표</p>
+      </div>
+      <div><img id="image2" src="imgs/context/image_2.jpg" alt="">
+        <p class="caption">[그림 2] 한글과 라틴 알파벳의 너비 비교</p>
+      </div>
+      <div><img id="image3" src="imgs/context/image_3.jpg" alt="">
+        <p class="caption">[그림 3] 한글의 조합과 시각보정</p>
+      </div>
+      <div><img id="image4" src="imgs/context/image_4.jpg" alt="">
+        <p class="caption">[그림 4] 한글의 조합과 시각보정2</p>
+      </div>
+      <div><img id="image5" src="imgs/context/image_5.jpg" alt="">
+        <p class="caption">[그림 5] 고정틀의 특징</p>
+      </div>
+      <div><img id="image6" src="imgs/context/image_6.jpg" alt="">
+        <p class="caption">[그림 6] 고정틀과 띄어쓰기1</p>
+      </div>
+      <div><img id="image7" src="imgs/context/image_7.jpg" alt="">
+        <p class="caption">[그림 7] 고정틀과 띄어쓰기2</p>
+      </div>
+      <div><img id="image8" src="imgs/context/image_8.jpg" alt="">
+        <p class="caption">[그림 8] 8분 모듈</p>
+      </div>
+      <div><img id="image9" src="imgs/context/image_9.jpg" alt="">
+        <p class="caption">[그림 9] 8분 모듈 수치화</p>
+      </div>
+      <div><img id="image10" src="imgs/context/image_10.jpg" alt="">
+        <p class="caption">[그림 10] 한글과 944unit</p>
+      </div>
+      <div><img id="image11" src="imgs/context/image_11.jpg" alt="">
+        <p class="caption">[그림 11] 한자, 한글, 라틴 알파벳의 공간</p>
+      </div>
+      <div><img id="image12" src="imgs/context/image_12.jpg" alt="">
+        <p class="caption">[그림 12] 8분 모듈에 따른 문장부호 디자인1</p>
+      </div>
+      <div><img id="image13" src="imgs/context/image_13.jpg" alt="">
+        <p class="caption">[그림 13] 8분 모듈에 따른 문장부호 디자인2</p>
+      </div>
+      <div><img id="image14" src="imgs/context/image_14.jpg" alt="">
+        <p class="caption">[그림 14] 조판점검1</p>
+      </div>
+      <div><img id="image15" src="imgs/context/image_16.jpg" alt="">
+        <p class="caption">[그림 15] 조판점검2</p>
+      </div>
+      <div><img id="image16" src="imgs/context/image_18.jpg" alt="">
+        <p class="caption">[그림 16] 틀 맞추기</p>
+      </div>
+      <div><img id="image17" src="imgs/context/image_19.jpg" alt="">
+        <p class="caption">[그림 17] 8분 모듈 라틴 알파벳 A, B</p>
+      </div>
+      <div><img id="image18" src="imgs/context/image_20.jpg" alt="">
+        <p class="caption">[그림 18] 8분 모듈 라틴 알파벳 A, B2</p>
+      </div>
+      <div><img id="image19" src="imgs/context/image_21.jpg" alt="">
+        <p class="caption">[그림 19] 한자와 라틴 알파벳 섞여짜기</p>
+      </div>
+      <div><img id="image20" src="imgs/context/image_22.jpg" alt="">
+        <p class="caption">[그림 20] 조판 예시1</p>
+      </div>
+      <div><img id="image21" src="imgs/context/image_23.jpg" alt="">
+        <p class="caption">[그림 21] 조판 예시2</p>
+      </div>
+      <div><img id="image22" src="imgs/context/image_24.jpg" alt="">
+        <p class="caption">[그림 22] 조판 예시3</p>
+      </div>
+      <div><img id="image23" src="imgs/context/image_25.jpg" alt="">
+        <p class="caption">[그림 23] 매치포인트</p>
+      </div>
     </div>
 
     <div class="research-article">
@@ -194,7 +243,7 @@
         충족시켜야 고정틀 배열에 따른 특징이 드러난다. 달리 말하면, 글줄 위아래 놓은 어절의 시작점이나 끝점이 아예 맞물리거나
         분명하게 다르지 않고, 미묘하게 틀어져 시각적으로 쾌적함을 주지 못하는 경우가 많다. 낫표를 비롯한 문장부호를 한글 글자틀
         너비를 1/8부터 8/8의 모듈 8개로 분류해서 제작한다면 문장부호의 조합에 따라 한글 전각 값과 맞물리는 경우를 늘릴 수 있다.
-        즉, 2/8 문장부호를 4개 겹치면 8/8 전각 부호 하나와 같은 배열을 연출할 수 있다. [그림 7, 그림 8]
+        즉, 2/8 문장부호를 4개 겹치면 8/8 전각 부호 하나와 같은 배열을 연출할 수 있다. [그림 7], [그림 8]
       </p>
 
       <h2>6. 한글 글리프에 따른 8분 모듈화</h2>
@@ -282,7 +331,7 @@
           <div><span>D</span></div>
           <div><span>E</span></div>
           <div><span>F</span></div>
-          <div><span>G</span></div> 
+          <div><span>G</span></div>
           <div><span>H</span></div>
           <div><span>I</span></div>
           <div><span>J</span></div>
@@ -3094,6 +3143,441 @@
   </div>
 
   <div class="archive-container">
+    <div class="gallery">
+      <div class="grid-item">
+        <img src="imgs/posts/image_1.jpg" />
+        <figcaption>6699프레스_50+ Voices(국제앰네스티 한국지부) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_2.jpg" />
+        <figcaption>6699프레스_50+ Voices(국제앰네스티 한국지부) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_3.jpg" />
+        <figcaption>6699프레스_50+ Voices(국제앰네스티 한국지부) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_4.jpg" />
+        <figcaption>6699프레스_50+ Voices(국제앰네스티 한국지부) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_5.jpg" />
+        <figcaption>6699프레스_긴키 지방의 어느 장소에 대하여</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_6.jpg" />
+        <figcaption>6699프레스_장애인 시민 나</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_7.jpg" />
+        <figcaption>개미그래픽스_마녀의 정원(엣눈북스) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_8.jpg" />
+        <figcaption>개미그래픽스_마녀의 정원(엣눈북스) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_9.jpg" />
+        <figcaption>개미그래픽스_마녀의 정원(엣눈북스) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_10.jpg" />
+        <figcaption>개미그래픽스_마녀의 정원(엣눈북스) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_11.jpg" />
+        <figcaption>개미그래픽스_모두 다른 빛깔(MMCA 레지던시 고양) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_12.jpg" />
+        <figcaption>개미그래픽스_모두 다른 빛깔(MMCA 레지던시 고양) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_13.jpg" />
+        <figcaption>개미그래픽스_모두 다른 빛깔(MMCA 레지던시 고양) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_14.jpg" />
+        <figcaption>개미그래픽스_모두 다른 빛깔(MMCA 레지던시 고양) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_15.jpg" />
+        <figcaption>개미그래픽스_모두 다른 빛깔(MMCA 레지던시 고양) 5</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_16.jpg" />
+        <figcaption>개미그래픽스_모두 다른 빛깔(MMCA 레지던시 고양) 6</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_17.jpg" />
+        <figcaption>규호초이_최정인 작가의 방-자연과 아이들 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_18.jpg" />
+        <figcaption>규호초이_최정인 작가의 방-자연과 아이들 2jpg</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_19.jpg" />
+        <figcaption>그래픽하_#6 Magazine Q.t 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_20.jpg" />
+        <figcaption>그래픽하_#6 Magazine Q.t 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_21.jpg" />
+        <figcaption>그래픽하_#6 Magazine Q.t 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_22.jpg" />
+        <figcaption>그래픽하_#6 Magazine Q.t 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_23.jpg" />
+        <figcaption>그래픽하_글꼴 교육의 접근과 실천(Magazine Q.t) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_24.jpg" />
+        <figcaption>그래픽하_글꼴 교육의 접근과 실천(Magazine Q.t) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_25.jpg" />
+        <figcaption>그래픽하_글꼴 교육의 접근과 실천(Magazine Q.t) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_26.jpg" />
+        <figcaption>그래픽하_글꼴 교육의 접근과 실천(Magazine Q.t) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_27.jpg" />
+        <figcaption>그래픽하_글꼴 교육의 접근과 실천(Magazine Q.t) 5</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_28.jpg" />
+        <figcaption>김태룡_작업중</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_29.jpg" />
+        <figcaption>김태룡_행복 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_30.jpg" />
+        <figcaption>김태룡_행복 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_31.jpg" />
+        <figcaption>김태룡_행복 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_32.jpg" />
+        <figcaption>김태룡_행복 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_33.jpg" />
+        <figcaption>김태룡_확대경 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_34.jpg" />
+        <figcaption>김태룡_확대경 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_35.jpg" />
+        <figcaption>김태룡_확대경 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_36.jpg" />
+        <figcaption>김태룡_확대경 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_37.jpg" />
+        <figcaption>김태룡_확대경 5</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_38.jpg" />
+        <figcaption>김태룡_확대경 6</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_39.jpg" />
+        <figcaption>루나소사이어티_평</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_40.jpg" />
+        <figcaption>룬드만워크스_THEILMA_1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_41.jpg" />
+        <figcaption>룬드만워크스_THEILMA_10</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_42.jpg" />
+        <figcaption>룬드만워크스_THEILMA_11</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_43.jpg" />
+        <figcaption>룬드만워크스_THEILMA_12</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_44.jpg" />
+        <figcaption>룬드만워크스_THEILMA_13</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_45.jpg" />
+        <figcaption>룬드만워크스_THEILMA_14</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_46.jpg" />
+        <figcaption>룬드만워크스_THEILMA_15</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_47.jpg" />
+        <figcaption>룬드만워크스_THEILMA_2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_48.jpg" />
+        <figcaption>룬드만워크스_THEILMA_3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_49.jpg" />
+        <figcaption>룬드만워크스_THEILMA_4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_50.jpg" />
+        <figcaption>룬드만워크스_THEILMA_5</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_51.jpg" />
+        <figcaption>룬드만워크스_THEILMA_6</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_52.jpg" />
+        <figcaption>룬드만워크스_THEILMA_7</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_53.jpg" />
+        <figcaption>룬드만워크스_THEILMA_8</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_54.jpg" />
+        <figcaption>룬드만워크스_THEILMA_9</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_55.jpg" />
+        <figcaption>박고은_도시상담 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_56.jpg" />
+        <figcaption>박고은_도시상담 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_57.jpg" />
+        <figcaption>박고은_도시상담 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_58.jpg" />
+        <figcaption>박고은_도시상담 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_59.jpg" />
+        <figcaption>박고은_도시상담 5</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_60.jpg" />
+        <figcaption>박소영_시, 최민(열화당) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_61.jpg" />
+        <figcaption>박소영_시, 최민(열화당) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_62.jpg" />
+        <figcaption>박소영_시, 최민(열화당) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_63.jpg" />
+        <figcaption>박소영_시, 최민(열화당) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_64.jpg" />
+        <figcaption>박채희_사근으로부터(온수공간)</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_65.jpg" />
+        <figcaption>백준열(AABB)_OS Seminar_formlesstwins</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_66.jpg" />
+        <figcaption>베이스라인_을사년 달력 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_67.jpg" />
+        <figcaption>베이스라인_을사년 달력 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_68.jpg" />
+        <figcaption>서울시립대학교_글자사이로 흐르는</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_69.jpg" />
+        <figcaption>스튜디오 유연한_주디스 헌의 외로운 열정(을유문화사) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_70.jpg" />
+        <figcaption>스튜디오 유연한_주디스 헌의 외로운 열정(을유문화사) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_71.jpg" />
+        <figcaption>스튜디오 유연한_주디스 헌의 외로운 열정(을유문화사) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_72.jpg" />
+        <figcaption>신신_박선아, 우아한 언어(위즈덤하우스) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_73.jpg" />
+        <figcaption>신신_박선아, 우아한 언어(위즈덤하우스) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_74.jpg" />
+        <figcaption>에이오 그래픽스_2025 강명희 캘린더</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_75.jpg" />
+        <figcaption>에이오 그래픽스_SeMA</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_76.jpg" />
+        <figcaption>에이오 그래픽스_채성필, 경계, 흙으로부터(가나아트센터) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_77.jpg" />
+        <figcaption>에이오 그래픽스_채성필, 경계, 흙으로부터(가나아트센터) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_78.jpg" />
+        <figcaption>에이오 그래픽스_채성필, 경계, 흙으로부터(가나아트센터) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_79.jpg" />
+        <figcaption>에이오 그래픽스_채성필, 경계, 흙으로부터(가나아트센터) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_80.jpg" />
+        <figcaption>오혜진_이우학교 건축(도미노프레스)</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_81.jpg" />
+        <figcaption>일상의실천_새로운 일상의 탄생(일상예술창작센터) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_82.jpg" />
+        <figcaption>일상의실천_새로운 일상의 탄생(일상예술창작센터) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_83.jpg" />
+        <figcaption>일상의실천_새로운 일상의 탄생(일상예술창작센터) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_84.jpg" />
+        <figcaption>일상의실천_새로운 일상의 탄생(일상예술창작센터) 5</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_85.jpg" />
+        <figcaption>일상의실천_재현과 재연(롯데갤러리) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_86.jpg" />
+        <figcaption>일상의실천_재현과 재연(롯데갤러리) 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_87.jpg" />
+        <figcaption>일상의실천_재현과 재연(롯데갤러리) 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_88.jpg" />
+        <figcaption>일상의실천_재현과 재연(롯데갤러리) 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_89.jpg" />
+        <figcaption>조서영_한국의 독립 예술 영화관 지도 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_90.jpg" />
+        <figcaption>조서영_한국의 독립 예술 영화관 지도 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_91.jpg" />
+        <figcaption>책들</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_92.jpg" />
+        <figcaption>한글꼴연구회_1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_93.jpg" />
+        <figcaption>한글꼴연구회_2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_94.jpg" />
+        <figcaption>한글꼴연구회_3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_95.jpg" />
+        <figcaption>한글꼴연구회_4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_96.jpg" />
+        <figcaption>희비스튜디오_수원지에서의 보고 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_97.jpg" />
+        <figcaption>희비스튜디오_수원지에서의 보고 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_98.jpg" />
+        <figcaption>CBR Graphic_전통한복 일생의례 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_99.jpg" />
+        <figcaption>CBR Graphic_전통한복 일생의례 2</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_100.jpg" />
+        <figcaption>CBR Graphic_전통한복 일생의례 3</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_101.jpg" />
+        <figcaption>CBR Graphic_전통한복 일생의례 4</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_102.jpg" />
+        <figcaption>CBR Graphic_전통한복 일생의례 5</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_103.jpg" />
+        <figcaption>CBR Graphic_전통한복 일생의례 6</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_104.jpg" />
+        <figcaption>CBR Graphic_전통한복 일생의례 7</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_105.jpg" />
+        <figcaption>NARRAT나라(thewillow1955) 1</figcaption>
+      </div>
+      <div class="grid-item">
+        <img src="imgs/posts/image_106.jpg" />
+        <figcaption>NARRAT나라(thewillow1955) 2</figcaption>
+      </div>
+    </div>
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage">
+      <p id="caption"></p>
+    </div>
+  </div>
+  </div>
+
+  <div class="credit-container">
     <h2>글꼴 정보</h2>
     <div class="credit">
       <div class="font-info">
@@ -3177,68 +3661,19 @@
         </div>
       </div>
     </div>
-    <div class="gallery">
-      <div>
-        <img src="imgs/1.png" />
-        <p>이미지 1</p>
-      </div>
-      <div>
-        <img src="imgs/2.png" />
-        <p>이미지 2</p>
-      </div>
-      <div>
-        <img src="imgs/3.png" />
-        <p>이미지 3</p>
-      </div>
-      <div>
-        <img src="imgs/4.png" />
-        <p>이미지 4</p>
-      </div>
-      <div>
-        <img src="imgs/5.png" />
-        <p>이미지 5</p>
-      </div>
-      <div>
-        <img src="imgs/6.png" />
-        <p>이미지 6</p>
-      </div>
-      <div>
-        <img src="imgs/7.png" />
-        <p>이미지 7</p>
-      </div>
-      <div>
-        <img src="imgs/8.png" />
-        <p>이미지 8</p>
-      </div>
-      <div>
-        <img src="imgs/9.png" />
-        <p>이미지 9</p>
-      </div>
-      <div>
-        <img src="imgs/10.png" />
-        <p>이미지 10</p>
-      </div>
-    </div>
-    <div id="imageModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="modalImage">
-      <p id="caption"></p>
-    </div>
-
-  </div>
   </div>
   <div class="navigation-container">
     <div data-target="functions-container">편산 미리보기</div>
     <div data-target="context-container">편산의 흐름</div>
     <div data-target="glyph-container">글리프 구성</div>
     <div data-target="archive-container">기록과 수집</div>
-    
+    <div data-target="credit-container">글꼴 정보</div>
   </div>
-
 </body>
 <script src="editHere.js" defer></script>
 <script src="js/fonts.js" defer></script>
 <script src="js/glyphs.js" defer></script>
 <script src="js/ui.js" defer></script>
 <script src="js/texts.js" defer></script>
+
 </html>
