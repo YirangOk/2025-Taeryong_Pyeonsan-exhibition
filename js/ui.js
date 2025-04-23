@@ -120,14 +120,27 @@ navButtons.forEach(button => {
     document.documentElement.scrollTop = 0;
   });
 
-  window.addEventListener('load',()=>{
-    $('.gallery').justifiedGallery({
-      selector   : 'figure',  
-      rowHeight  : 200,
-      maxRowHeight:300,
-      margins    : 8,
-      captions   : false, 
-      lastRow    : 'justify'
-    });
+function initGallery() {
+  const rowH = window.innerWidth > 1920 ? 600 : 200;   // 1920 px 초과면 500
+  const margin = window.innerWidth > 1920 ? 20 : 10;
+
+  $('.gallery').justifiedGallery('destroy');           // 이전 인스턴스 제거
+  $('.gallery').justifiedGallery({
+    selector      : 'figure',
+    rowHeight     : rowH,
+    maxRowHeight  : rowH * 1.2,                       // 필요 시 비례 조정
+    margins       : margin,
+    captions      : false,
+    lastRow       : 'justify'
   });
+}
+
+window.addEventListener('load', initGallery);
+window.addEventListener('resize', debounce(initGallery, 250));
+
+/* 간단한 디바운스 함수 */
+function debounce(fn, delay){
+  let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), delay); };
+}
+
 });

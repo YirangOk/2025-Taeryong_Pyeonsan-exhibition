@@ -26,45 +26,86 @@
 }
 
 @keyframes blink {
-  0%, 20%, 40%, 60%, 80%, 100% { opacity: 1; }
-  10%, 30%, 50%, 70%, 90%      { opacity: 0; } 
+
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    opacity: 1;
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    opacity: 0;
+  }
 }
-.flash-highlight{
-  animation: blink 1s linear infinite;
+
+.flash-highlight {
+  animation: blink 2s linear infinite;
 }
 
 :root {
   --main-color: black;
   --sub-color: white;
-  --gray: #e7e7e7;
+  --gray: #c2c2c2;
+  --light-gray: #f7f7f7;
   --link: rgb(0, 255, 0);
-  --basic-margin: 10px;
-  --font-size: clamp(16px, 1.6vw, 24px);
+  --border: clamp(1.2px, 0.1vw, 5px);
+  --basic-padding: clamp(16px, 2vw, 100px);
+  --font-size: clamp(16px, 1.5vw, 100px);
+  --scrollbar-size: clamp(6px, 0.6vw, 12px);
+  --thumb : var(--gray);   /* 밝은 회색 */
+  --track : #ffffff;   /* 흰색      */
+  --sb-xs : 6px;       /* 모바일  ≤767px */
+  --sb-sm : 8px;       /* 태블릿 768–1279px */
+  --sb-lg : 12px;      /* 데스크톱 ≥1280px  */
 }
 
-/* Scrollbar Styling */
-body::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+/* 2. ‘스크롤 발생’ 모든 요소 집합 ------------------------------- */
+.scrollable,
+html{
+  scrollbar-width: thin;                          /* Firefox */
+  scrollbar-color: var(--thumb) var(--track);
 }
 
-body::-webkit-scrollbar-track {
-  background-color: white;
+/* 3. WebKit/Blink 스크롤바 – 모든 후손 요소에 적용 -------------- */
+*::-webkit-scrollbar{
+  width : var(--sb-xs);
+  height: var(--sb-xs);
+}
+*::-webkit-scrollbar-track{background:var(--track);}
+*::-webkit-scrollbar-thumb{
+  background:var(--thumb);
+  border-radius:9999px;
+}
+*::-webkit-scrollbar-thumb:hover{
+  background: color-mix(in srgb, var(--thumb) 70%, #000 30%);
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: black;
-  border-radius: 4px;
+/* 4. 두께 반응형 (미디어쿼리) ---------------------------------- */
+@media (min-width:768px){
+  *::-webkit-scrollbar{width:var(--sb-sm);height:var(--sb-sm);}
+}
+@media (min-width:1280px){
+  *::-webkit-scrollbar{width:var(--sb-lg);height:var(--sb-lg);}
 }
 
-body::-webkit-scrollbar-thumb:hover {
-  background-color: #444;
-}
-
-/* Firefox 대응 */
-body {
-  scrollbar-width: thin;
-  scrollbar-color: black white;
+/* 5. 실제 스크롤 나는 div 에 .scrollable 지정 ------------------ */
+.functions,
+.context-container,
+.glyph-container,
+.archive-container,
+.credit-container{
+  overflow-y: auto;   /* 기존 scroll 유지 가능 */
+  overflow-x: hidden;
+  height: 90vh;
+  /* 통일된 디자인 적용용 클래스 */
+  /* (선택자가 너무 길어지지 않도록 클래스 하나 추가)          */
 }
 
 /* SVG fill classes */
@@ -110,8 +151,8 @@ body::selection {
 .navigation-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  background-color: white;
+  gap: var(--basic-padding);
+  background-color: var(--sub-color);
   position: absolute;
   width: 100%;
   height: auto;
@@ -119,22 +160,14 @@ body::selection {
   text-align: center;
 }
 
-/* .navigation-container div:first-child {
-  padding: 0.25rem 0rem 0rem 3rem;
-}
-
-.navigation-container div:last-child {
-  padding: 0.25rem 3rem 0rem 0rem;
-} */
-
 .navigation-container div {
-  border-top: 1.1px solid var(--main-color);
-  background-color: white;
-  padding: 0.25rem 0rem 1rem 0rem;
+  border-top: var(--border) solid var(--main-color);
+  background-color: var(--sub-color);
+  padding: calc(var(--basic-padding)*0.25) 0rem calc(var(--basic-padding)*0.75) 0rem;
 }
 
 .navigation-container div:hover {
-  text-decoration: underline 1.1px;
+  text-decoration: underline var(--border);
   text-underline-offset: calc(var(--font-size)/2);
   cursor: pointer;
 }
@@ -144,22 +177,24 @@ body::selection {
   word-break: break-all;
   display: grid;
   grid-template-columns: 1fr 1fr 0fr;
-  gap: 2rem;
+  gap: var(--basic-padding);
   width: 100%;
 }
 
 .editable-title {
   padding-top: 0.5rem;
   font-size: calc(var(--font-size) * 0.75);
+  border-top: var(--border) solid var(--main-color);
 }
 
 /* Editable Div */
 .editableDiv {
-  font-size: 2.5vw;
+  padding: 0 calc(var(--basic-padding)*0.5);
+  font-size: calc(var(--font-size) * 1.8);
   line-height: 1.5;
   overflow: auto;
   width: auto;
-  height: 80vh;
+  height: 78vh;
   white-space: pre-wrap;
 }
 
@@ -167,7 +202,7 @@ body::selection {
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
-  background-color: var(--gray);
+  background-color: var(--light-gray);
 }
 
 .editableDiv:nth-child(1) {
@@ -180,24 +215,17 @@ body::selection {
   font-kerning: normal;
 }
 
-.title-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  position: absolute;
-  bottom: -1.5rem;
-  width: 100%;
-}
-
 .functions {
-  font-family: 'PyeonsanBetaAA', serif;
+  font-family: 'PyeonsanAA', serif;
   display: flex;
-  width: min-content;
-  gap: 1rem;
+  width: calc(var(--basic-padding)*1.5);
   text-align: center;
   flex-direction: column;
-  border-right: 1px solid;
-  border-left: 1px solid;
+  border-right: var(--border) solid;
+  border-left: var(--border) solid;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 78vh;
 }
 
 .range-name {
@@ -206,39 +234,42 @@ body::selection {
   color: var(--main-color);
   word-break: keep-all;
   white-space: nowrap;
+  padding-bottom: calc(var(--basic-padding)/2);
 }
 
 .range-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  /* width: 100%; */
   height: 100%;
   align-items: center;
 }
 
 .slider-wrapper {
-  transform: rotate(-90deg) !important;
   transform-origin: center;
-  /* width: 200px; */
-  /* 세로 슬라이더 전체 길이 */
-  /* height: 40px; */
-  /* 슬라이더 thumb 여유 */
-  width: 80px;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-bottom: calc(var(--basic-padding)/2);
+}
+
+.input-sizing {
+  width: max-content;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .customRange {
+  transform: rotate(-90deg) !important;
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
-  /* 슬라이더 track 길이 (회전 전 기준) */
-  height: 1.1px;
-  background: black;
+  width: 15vh;
+  height: var(--border);
+  background: var(--main-color);
   border-radius: 2px;
   cursor: pointer;
 }
@@ -246,36 +277,12 @@ body::selection {
 /* Chrome & Safari */
 .customRange::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
+  width: calc(var(--basic-padding)*0.9);
+  height: calc(var(--basic-padding)*0.9);
   background: #333;
   border-radius: 50%;
-  /* margin-top: -8px; */
   cursor: pointer;
 }
-
-
-/* .customRange::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #333;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-} */
-
-/* input[type="range"].customRange::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: black;
-  border-radius: 50%;
-  cursor: pointer;
-} */
 
 input[type="range"].customRange::-webkit-slider-thumb:hover,
 .functions-container button:hover {
@@ -284,12 +291,11 @@ input[type="range"].customRange::-webkit-slider-thumb:hover,
 
 .functions-container button {
   all: unset;
-  background-color: black;
-  width: 20px;
-  height: 20px;
+  background-color: var(--main-color);
+  width: calc(var(--basic-padding)*0.9);
+  height: calc(var(--basic-padding)*0.9);
   border-radius: 50%;
 }
-
 
 /* Headings */
 h1,
@@ -297,13 +303,7 @@ h2,
 h4,
 h5,
 h6 {
-  padding: 5rem 0 2rem 0;
-  font-weight: normal;
-  font-size: var(--font-size);
-}
-
-h3 {
-  padding: 1rem 0 1rem 0;
+  padding: calc(var(--basic-padding)*3) 0 var(--basic-padding) 0;
   font-weight: normal;
   font-size: var(--font-size);
 }
@@ -320,9 +320,9 @@ h2+h3 {
 .credit-container {
   display: flex;
   position: absolute;
-  gap: 2rem;
+  gap: var(--basic-padding);
   top: 0;
-  padding: 1.5rem 3rem;
+  padding: var(--basic-padding) calc(var(--basic-padding)*2);
   width: -webkit-fill-available;
 }
 
@@ -340,7 +340,6 @@ h2+h3 {
 .context-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 1rem;
   height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -349,7 +348,6 @@ h2+h3 {
 .context-container div {
   display: flex;
   flex-direction: column;
-  /* padding-bottom: 5rem; */
 }
 
 .context-container div .caption {
@@ -359,7 +357,7 @@ h2+h3 {
 }
 
 .context-container div img {
-  border: 1px solid var(--gray);
+  border: var(--border) solid var(--gray);
   cursor: pointer;
 }
 
@@ -390,7 +388,6 @@ h2+h3 {
 .context-container-images {
   display: flex;
   flex-direction: column;
-  /* gap: 1rem; */
 }
 
 .context-container-images img {
@@ -412,13 +409,14 @@ h2+h3 {
   flex-direction: column;
   padding-left: 45%;
   position: absolute;
+  padding-right: calc(var(--basic-padding)*2);
   right: 0;
 }
 
 .credit {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  gap: var(--basic-padding);
 }
 
 .glyphs-characters {
@@ -428,21 +426,21 @@ h2+h3 {
 }
 
 .glyphs-characters div {
-  font-size: calc(var(--font-size) * 3);
-  outline: 1.1px solid black;
+  font-size: calc(var(--font-size) * 2.5);
+  outline: var(--border) solid var(--main-color);
   outline-offset: -0.85px;
-  height: calc(var(--font-size)*3.7);
+  height: calc(var(--font-size)*3.4);
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: 1.1px solid black;
+  outline: var(--border) solid var(--main-color);
   outline-offset: -0.85px;
   user-select: none;
 }
 
 .glyphs-characters div span {
-  transform: translateY(-0.3rem);
+  transform: translateY(calc(var(--basic-padding)*-0.2));
   text-rendering: optimizeLegibility;
   font-feature-settings: "liga"0, "calt"0;
   font-variant-emoji: text;
@@ -451,8 +449,8 @@ h2+h3 {
 }
 
 .glyphs-characters div:hover {
-  background-color: black;
-  color: white;
+  background-color: var(--main-color);
+  color: var(--sub-color);
   cursor: pointer;
 }
 
@@ -463,12 +461,12 @@ h2+h3 {
 } */
 
 .preview {
-  width: 35vw;
-  height: 35vw;
+  width: 30vw;
+  height: 30vw;
   display: flex;
-  background-color: black;
-  color: white;
-  font-size: calc(var(--font-size) * 17);
+  background-color: var(--main-color);
+  color: var(--sub-color);
+  font-size: calc(var(--font-size) * 13);
   aspect-ratio: 1;
   justify-content: center;
   align-items: center;
@@ -480,7 +478,7 @@ h2+h3 {
 }
 
 .preview span {
-  transform: translateY(-2.5rem);
+  transform: translateY(calc(var(--basic-padding)*-0.9));
 }
 
 /* .glyphs-contants {
@@ -524,13 +522,18 @@ h2+h3 {
   height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  gap: 1rem;
 }
 
 /* Gallery */
 
 .gallery {
   overflow: visible !important;
+}
+
+.justified-gallery{
+  width: 92vw !important;
+  position: absolute !important;
+  padding-bottom: calc(var(--basic-padding)*5) !important;
 }
 
 .gallery figure {
@@ -586,21 +589,21 @@ h2+h3 {
 
 .modal-content {
   max-width: 90vw;
-  max-height: 80vh;
+  max-height: 78vh;
 }
 
 .close {
   position: absolute;
   top: 0rem;
   right: 2rem;
-  color: white;
+  color: var(--sub-color);
   font-size: calc(var(--font-size) * 2);
   font-weight: bold;
   cursor: pointer;
 }
 
 #caption {
-  color: white;
+  color: var(--sub-color);
   margin-top: 1rem;
   font-size: var(--font-size);
 }
@@ -614,7 +617,6 @@ h2+h3 {
   height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  gap: 1rem;
 }
 
 
@@ -628,18 +630,19 @@ h2+h3 {
 }
 
 .credit-table {
-  border-top: 1.1px solid black;
+  border-top: var(--border) solid var(--main-color);
   display: grid;
   grid-template-columns: 1fr 3fr;
   padding: 0.5rem 0;
 }
 
 .credit-table:last-child {
-  border-bottom: 1.1px solid black;
+  border-bottom: var(--border) solid var(--main-color);
 }
 
+/* 
 @media (min-width: 2000px) {
   :root {
     --font-size: 2vw;
   }
-}
+} */

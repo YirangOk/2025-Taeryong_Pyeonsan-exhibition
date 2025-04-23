@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         el.classList.add('flash-highlight');
         setTimeout(() => {
           el.classList.remove('flash-highlight');
-        }, 1000);
+        }, 2000);
       }
       
       const img14 = document.getElementById('image14');

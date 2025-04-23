@@ -89,10 +89,10 @@ function resetToOriginalText() {
 
 monitoringInterval = setInterval(() => {
   const now = Date.now();
-  if (now - lastInputTime > 600000) { 
+  if (now - lastInputTime > 60000) { 
     startDeleting();
   }
-}, 1000);
+}, 5000);
 
 const originalFontSize = 3; 
 const originalLineHeight = 1.5;

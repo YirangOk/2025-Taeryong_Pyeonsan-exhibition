@@ -33,16 +33,20 @@
         <div class="range-container">
           <div class="range-name">크기조절</div>
           <div class="range-box slider-wrapper">
+            <span class="input-sizing">
             <input id="fontSizeRange" class="customRange" type="range" min="2" max="25" value="3" step="0.1"
               oninput="changeFontSize(this.value)" />
+            </span>
             <!-- <button id="toggleFontSizeButton"></button> -->
           </div>
         </div>
         <div class="range-container">
           <div class="range-name">글줄사이</div>
           <div class="range-box slider-wrapper">
+            <span class="input-sizing">
             <input class="customRange" type="range" min="1" max="2.0" value="1.5" step="0.1"
               oninput="changeLineHeight(this.value)">
+            </span>
             <!-- <button id="toggleFontHeightButton"></button> -->
           </div>
         </div>
@@ -51,11 +55,7 @@
           <button id="toggleFontButton"></button>
         </div>
       </div>
-      <div>
-      </div>
     </div>
-    <!-- <div class="title-container">
-    </div> -->
   </div>
 
   <div class="context-container">
