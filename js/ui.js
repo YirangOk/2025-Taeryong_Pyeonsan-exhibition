@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let [, title] = cap.innerHTML.split('<br>');
     title = (title || '').replace(/<[^>]*>/g, '').trim();
     if (!title) title = cap.innerHTML.split('<br>')[0].replace(/<[^>]*>/g, '').trim();
-    title = title.replace(/\s*\d+\s*$/, '').trim();
+    title = title.replace(/\s*\s*$/, '').trim();
     it.dataset.group = title;
   });
   const seen = new Set();
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       img.onload = () => {                // ② 다 받았을 때만 제거
         delete img.dataset.src;
-        $('.gallery, document').justifiedGallery('norewind');
+        $('.gallery').justifiedGallery('norewind');
       };
     });
   });
@@ -159,21 +159,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('.gallery')
       .justifiedGallery({
-        selector: '.grid-item',
+        selector: 'figure.grid-item',  // 항목을 figure 요소로 지정
+        imgSelector: '> img',           // 썸네일 이미지를 명확히 지정
         rowHeight: h,
         maxRowHeight: h * 1.2,
         margins: m,
-        captions: false,
-        lastRow: 'justify',
-        waitThumbnailsLoad: true // 썸네일 미리 계산
-      })
-      // 레이아웃 확정 후 아직 로드 안 된 이미지 관찰
-      .on('jg.complete', () => {
-        document
-          .querySelectorAll('img.lazy[data-src]')
-          .forEach(img => io.observe(img));
+        captions: false, 
+        lastRow: 'nojustify',
+        waitThumbnailsLoad: true
+      }).on('jg.complete', function(){
+        const $gallery = $(this);
+    
+        // 1. 각 엔트리마다 이미지 높이만큼 figcaption의 padding-top 설정
+        $gallery.find('.jg-entry').each(function(){
+          const $entry   = $(this);
+          const $img     = $entry.find('img');
+          const imgH     = $img.height();
+          const $figure  = $img.closest('figure.grid-item');
+          const $caption = $figure.find('figcaption');
+    
+          $caption.css('padding-top', imgH + 'px');  
+          // CSS padding-top으로 이미지 높이만큼 텍스트를 아래로 위치시킴
+        });
+    
+        // 2. 각 .jg-row의 최대 엔트리 높이를 계산해 해당 높이로 통일
+        $gallery.find('.jg-row').each(function(){
+          let maxH = 0;
+          const $row = $(this);
+    
+          $row.find('.jg-entry').each(function(){
+            const h = $(this).outerHeight(true);
+            if (h > maxH) maxH = h;
+          });
+    
+          $row.find('.jg-entry').css({
+            height: maxH + 'px',
+            overflow: 'visible'
+          });
+        });
       });
-
     /* 최초 한 번 관찰 시작 */
     document
       .querySelectorAll('img.lazy[data-src]')

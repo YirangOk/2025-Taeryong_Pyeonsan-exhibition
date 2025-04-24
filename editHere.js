@@ -19,19 +19,21 @@ editors.forEach(editor => editor.innerHTML = htmlText);
 let isSyncing = false;
 // 실시간 동기화
 
-editors.forEach(editor => {
+editors.forEach((editor, idx) => {
   editor.addEventListener('input', () => {
+    if (isSyncing) return;                  // 동기화 중엔 무시
+    isSyncing = true;
     lastInputTime = Date.now();
-    hasDeletedOnce = false; 
-    // lastInputTime = Date.now();
-    const content = editor.innerText;
+    hasDeletedOnce = false;
+
+    const content = editor.innerHTML;       // innerHTML로 <br> 포함
     editors.forEach((other, j) => {
-      if (j !== idx) other.innerText = content;
+      if (j !== idx) other.innerHTML = content;
     });
+
     isSyncing = false;
   });
 });
-
 // 1) 부드러운 삭제 애니메이션
 function startDeleting() {
   cancelAnimationFrame(startDeleting.raf);
@@ -124,8 +126,8 @@ function resetToOriginalText(){
 currentFontSize = originalFontSize;
 currentLineHeight = originalLineHeight;
 
-// window.onload = function () {
+window.onload = function () {
   
-//   changetextDirection();
-//   syncEditableDivs();
-// };
+  changetextDirection();
+  syncEditableDivs();
+};
