@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       img.onload = () => {                // ② 다 받았을 때만 제거
         delete img.dataset.src;
-        $('.gallery').justifiedGallery('norewind');
+        $('.gallery, document').justifiedGallery('norewind');
       };
     });
   });
