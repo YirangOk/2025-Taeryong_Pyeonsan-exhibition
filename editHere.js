@@ -99,7 +99,7 @@ const originalFontSize = 3;
 const originalLineHeight = 1.5;
 let typingInterval = null;
 
-const navButtons = document.querySelectorAll('.navigation-container>div');
+// const navButtons = document.querySelectorAll('.navigation-container>div');
 
 /* ―― 1.  중복된 resetToOriginalText() 정의는 **아래 하나**만 남긴다 ―― */
 function resetToOriginalText(){
@@ -125,17 +125,6 @@ function resetToOriginalText(){
   lastInputTime = Date.now();
 }
 
-/* ―― 2.  네비게이션을 누를 때마다 텍스트를 초기 상태로 되돌린다 ―― */
-navButtons.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const target = btn.getAttribute('data-target');
-
-    /* glyph-container를 떠날 때에만 초기화하려면 ↓ 조건 주석 해제
-       if(target !== 'glyph-container') resetToOriginalText();
-    */
-    resetToOriginalText();             // 모든 탭 전환에 대해 초기화
-  });
-});
 
 currentFontSize = originalFontSize;
 currentLineHeight = originalLineHeight;
