@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+
   /* A. 섹션 토글 ------------------------------------------------ */
   const navButtons = document.querySelectorAll('.navigation-container>div');
   const sections = {
@@ -94,7 +96,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function open() {
     const n = current[idx];
     if (!n) return;
-    imgModal.src = n.querySelector('img').src;
+  
+    const thumb = n.querySelector('img');
+  
+    /* 1. 썸네일이 아직 lazy 상태면 즉시 로드 */
+    if (thumb.dataset.src) {
+      thumb.src = thumb.dataset.src;    // 진짜 이미지 fetch
+      delete thumb.dataset.src;
+    }
+  
+    /* 2. onload 이후 모달에 표시 (캐시에 있으면 곧바로 실행) */
+    thumb.onload = () => {
+      imgModal.src = thumb.src;
+    };
+    if (thumb.complete) imgModal.src = thumb.src;   // 이미 캐시돼 있으면 바로
+  
+    /* 3. 캡션 & 내비게이션 처리는 그대로 */
     caption.innerHTML = n.querySelector('figcaption').innerHTML;
     modal.style.display = 'block';
     prev.style.visibility = idx ? 'visible' : 'hidden';
@@ -117,29 +134,62 @@ document.addEventListener('DOMContentLoaded', () => {
       open();
     }
   };
-
-  /* F. Justified‑Gallery -------------------------------------- */
+  /* F. IntersectionObserver (lazy-load) ─────────── */
+  const io = new IntersectionObserver((entries, ob) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+  
+      const img = entry.target;
+      img.src = img.dataset.src;          // ① 실제 로드
+      ob.unobserve(img);
+  
+      img.onload = () => {                // ② 다 받았을 때만 제거
+        delete img.dataset.src;
+        $('.gallery').justifiedGallery('norewind');
+      };
+    });
+  });
+  /* G. 갤러리 레이아웃 ──────────────────────────── */
   function initGallery() {
     const h = window.innerWidth > 1920 ? 700 : 300,
       m = window.innerWidth > 1920 ? 20 : 10;
+
+    // 기존 인스턴스 제거
     $('.gallery').justifiedGallery('destroy');
-    $('.gallery').justifiedGallery({
-      selector: '.grid-item',
-      rowHeight: h,
-      maxRowHeight: h * 1.2,
-      margins: m,
-      captions: false,
-      lastRow: 'justify'
-    });
+
+    $('.gallery')
+      .justifiedGallery({
+        selector: '.grid-item',
+        rowHeight: h,
+        maxRowHeight: h * 1.2,
+        margins: m,
+        captions: false,
+        lastRow: 'justify',
+        waitThumbnailsLoad: true // 썸네일 미리 계산
+      })
+      // 레이아웃 확정 후 아직 로드 안 된 이미지 관찰
+      .on('jg.complete', () => {
+        document
+          .querySelectorAll('img.lazy[data-src]')
+          .forEach(img => io.observe(img));
+      });
+
+    /* 최초 한 번 관찰 시작 */
+    document
+      .querySelectorAll('img.lazy[data-src]')
+      .forEach(img => io.observe(img));
   }
+
   initGallery();
   window.addEventListener('resize', debounce(initGallery, 250));
 
-  function debounce(f, d) {
+  /* ── debounce 헬퍼 ─────────────────────────────── */
+  function debounce(fn, delay) {
     let t;
     return (...a) => {
       clearTimeout(t);
-      t = setTimeout(() => f(...a), d);
+      t = setTimeout(() => fn(...a), delay);
     };
   }
+
 });

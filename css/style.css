@@ -202,7 +202,7 @@ body::selection {
 .editable-title {
   padding-top: 0.5rem;
   font-size: calc(var(--font-size) * 0.75);
-  border-top: var(--border) solid var(--main-color);
+  border-top: var(--border) solid var(--gray);
 }
 
 /* Editable Div */
@@ -563,10 +563,10 @@ h2+h3 {
 }
 
 .gallery img {
-  display: block;
-  width: 100%;
-  height: auto;
-  cursor: pointer;
+  width: 100%;  
+  height: auto; 
+  display: block; 
+  object-fit: cover;
 }
 
 .gallery figcaption {
@@ -587,6 +587,11 @@ h2+h3 {
   font-size: calc(var(--font-size) * 0.75);
   padding-top: 0.15rem;
   padding-bottom: 0.3rem;
+}
+
+.justified-gallery > div,
+.justified-gallery > div > img{
+  opacity: 1 !important;
 }
 
 #imageModal {
@@ -633,6 +638,12 @@ h2+h3 {
   overflow: hidden;
   background: none;
   color: var(--sub-color);
+  cursor: pointer;
+  user-select:none; 
+}
+
+.modal-nav button:hover {
+  color: var(--gray);
 }
 
 .close {

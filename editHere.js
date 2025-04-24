@@ -139,10 +139,9 @@ navButtons.forEach(btn=>{
 
 currentFontSize = originalFontSize;
 currentLineHeight = originalLineHeight;
-applyTextStyles(); 
 
-window.onload = function () {
+// window.onload = function () {
   
-  changetextDirection();
-  syncEditableDivs();
-};
+//   changetextDirection();
+//   syncEditableDivs();
+// };
