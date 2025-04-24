@@ -87,7 +87,7 @@ function typingRestore() {
 }
 
 const monitoringInterval = setInterval(() => {
-  const idle = Date.now() - lastInputTime > 1000;
+  const idle = Date.now() - lastInputTime > 350000;
   if (idle && !hasDeletedOnce) {
     hasDeletedOnce = true;      // ← 한 번만 삭제 트리거
     startDeleting();
