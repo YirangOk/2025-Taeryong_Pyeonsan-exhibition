@@ -86,18 +86,18 @@ document.addEventListener("DOMContentLoaded", () => {
       
       const img14 = document.getElementById('image14');
       img14.addEventListener('mouseenter', () => {
-          img14.src = 'imgs/context/image_15.jpg';
+          img14.src = 'imgs/context/image_15.gif';
       });
       img14.addEventListener('mouseleave', () => {
-          img14.src = 'imgs/context/image_14.jpg';
+          img14.src = 'imgs/context/image_14.gif';
       });
 
       const img15 = document.getElementById('image15');
       img15.addEventListener('mouseenter', () => {
-          img15.src = 'imgs/context/image_17.jpg';
+          img15.src = 'imgs/context/image_17.gif';
       });
       img15.addEventListener('mouseleave', () => {
-          img15.src = 'imgs/context/image_16.jpg';
+          img15.src = 'imgs/context/image_16.gif';
       });
 
   });
