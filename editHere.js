@@ -1,74 +1,53 @@
-// 1. name: 웹 페이지에 표시될 폰트의 이름입니다. 이 이름은 사용자 인터페이스에 직접 보여지며,
-//    사용자가 폰트를 선택할 때 표시되는 이름입니다.
-// 2. url: 폰트 파일이 저장된 위치의 URL입니다. 이 URL은 웹 페이지에서 해당 폰트를
-//    불러오기 위해 사용됩니다. 폰트 파일은 서버의 해당 경로에 저장되어 있어야 합니다.
-//    기존에 저장된 위치는 fonts woff가 저장되어 있습니다.
-// 3. textDirectionSelect.value: 화면 로드시 세로쓰기를 먼저 마주하고싶을 때 '1' 작성
-// 4. text: 미리보기에 보여질 본문입니다.
-
-const fonts = [{
-    name: '노토산스 Regular',
-    url: 'fonts/NotoSans-Regular.woff'
-  }, {
-    name: '노토산스 Medium',
-    url: 'fonts/NotoSans-Medium.woff'
-  }, {
-    name: '노토산스 Bold',
-    url: 'fonts/NotoSans-Bold.woff'
-  }];
-
-
-const originalText = 
-`안녕하세요. 이 곳에서는 한글 글꼴
+const originalText = `안녕하세요. 이 곳에서는 한글 글꼴
 「편산」을 타이핑할 수 있습니다.
 타이포그래피
 typography
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz`;
+
 const editors = document.querySelectorAll('.editableDiv');
-
 let lastInputTime = Date.now();
-let deleteInterval = null;
-let monitoringInterval = null;
+let hasDeletedOnce = false;      // ← 추가
+let typingInterval = null;
 
+// HTML용 줄바꿈 포함 문자열
+const htmlText = originalText.replace(/\n/g, '<br>');
 
-const htmlText = originalText.replace(/\n/g, "<br>");
-editors.forEach(editor => {
-  editor.innerHTML = htmlText;
-});
-
+// 초기 렌더링
+editors.forEach(editor => editor.innerHTML = htmlText);
 
 let isSyncing = false;
-editors.forEach((editor, index) => {
+// 실시간 동기화
+
+editors.forEach(editor => {
   editor.addEventListener('input', () => {
-    if (isSyncing) return;
-    isSyncing = true;
-    const content = editor.innerText;
     lastInputTime = Date.now();
-
-    editors.forEach((otherEditor, i) => {
-      if (i !== index) {
-        otherEditor.innerText = content;
-      }
+    hasDeletedOnce = false; 
+    // lastInputTime = Date.now();
+    const content = editor.innerText;
+    editors.forEach((other, j) => {
+      if (j !== idx) other.innerText = content;
     });
-
     isSyncing = false;
   });
 });
 
-function startDeleting () {
+// 1) 부드러운 삭제 애니메이션
+function startDeleting() {
   cancelAnimationFrame(startDeleting.raf);
-  let last = performance.now();
+  let prevTime = performance.now();
 
-  function frame (now) {
-    if (now - last >= 10) {            // 0.01 s 간격
-      last = now;
+  function frame(now) {
+    if (now - prevTime >= 10) {
+      prevTime = now;
       const txt = editors[0].innerText;
-      if (!txt.length) { resetToOriginalText(); return; }
-
-      const newTxt = txt.slice(0, -1);
+      if (!txt.length) {
+        immediateRestore();
+        return;
+      }
+      const sliced = txt.slice(0, -1);
       isSyncing = true;
-      editors.forEach(ed => ed.innerText = newTxt);
+      editors.forEach(ed => ed.innerText = sliced);
       isSyncing = false;
     }
     startDeleting.raf = requestAnimationFrame(frame);
@@ -76,28 +55,44 @@ function startDeleting () {
   startDeleting.raf = requestAnimationFrame(frame);
 }
 
-
-function resetToOriginalText() {
-  clearInterval(deleteInterval);
+// 2) 즉시 와라락 복원
+function immediateRestore() {
+  cancelAnimationFrame(startDeleting.raf);
   isSyncing = true;
-  editors.forEach(editor => {
-    editor.innerText = originalText;
-  });
+  editors.forEach(ed => ed.innerHTML = htmlText);
   isSyncing = false;
-  lastInputTime = Date.now(); 
+  lastInputTime = Date.now();
 }
 
+// 3) 타이핑 애니메이션 복원
+function typingRestore() {
+  cancelAnimationFrame(startDeleting.raf);
+  clearInterval(typingInterval);
+  isSyncing = true;
+  editors.forEach(ed => ed.innerText = '');
+  isSyncing = false;
 
-monitoringInterval = setInterval(() => {
-  const now = Date.now();
-  if (now - lastInputTime > 60000) { 
+  let i = 0;
+  typingInterval = setInterval(() => {
+    if (i >= originalText.length) {
+      clearInterval(typingInterval);
+      lastInputTime = Date.now();
+      return;
+    }
+    const ch = originalText[i++];
+    editors.forEach(ed => ed.innerText += ch);
+  }, 10);
+}
+
+const monitoringInterval = setInterval(() => {
+  const idle = Date.now() - lastInputTime > 1000;
+  if (idle && !hasDeletedOnce) {
+    hasDeletedOnce = true;      // ← 한 번만 삭제 트리거
     startDeleting();
   }
 }, 5000);
-
 const originalFontSize = 3; 
 const originalLineHeight = 1.5;
-let typingInterval = null;
 
 // const navButtons = document.querySelectorAll('.navigation-container>div');
 
