@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         preview.textContent = g.textContent.trim();
   
         const parentClassList = g.parentElement.classList;
-        if (parentClassList.contains('PyeonsanAA')) {
-          preview.style.fontFamily = 'a';
+        if (parentClassList.contains('latin-A')) {
+          preview.style.fontFamily = 'PyeonsanAA';
         } else if (parentClassList.contains('latin-B')) {
           preview.style.fontFamily = 'PyeonsanBB';
         }
