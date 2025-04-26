@@ -224,12 +224,12 @@ body::selection {
   background-color: var(--light-gray);
 }
 
-.editableDiv:nth-child(1) {
+.fontstyle-A {
   font-family: 'PyeonsanBetaAA', serif;
   font-kerning: normal;
 }
 
-.editableDiv:nth-child(2) {
+.fontstyle-B {
   font-family: 'PyeonsanBetaBB', serif;
   font-kerning: normal;
 }
