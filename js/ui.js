@@ -49,10 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
   /* C. 글리프 미리보기 ---------------------------------------- */
   const preview = document.querySelector('.preview span');
   if (preview) {
-    document.querySelectorAll('.glyphs-contants .glyphs-characters div').forEach(g => g.addEventListener('mouseenter', () => {
-      preview.textContent = g.textContent.trim();
-    }));
-  }
+    document.querySelectorAll('.glyphs-contants .glyphs-characters div').forEach(g => {
+      g.addEventListener('mouseenter', () => {
+        preview.textContent = g.textContent.trim();
+  
+        const parentClassList = g.parentElement.classList;
+        if (parentClassList.contains('PyeonsanAA')) {
+          preview.style.fontFamily = 'a';
+        } else if (parentClassList.contains('latin-B')) {
+          preview.style.fontFamily = 'PyeonsanBB';
+        }
+      });
+    });
+  }  
 
   /* D. 갤러리 그룹화 + 중복 노드 이동 ------------------------- */
   const items = [...document.querySelectorAll('.grid-item')];
