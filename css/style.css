@@ -214,6 +214,7 @@ body::selection {
   width: auto;
   height: 78vh;
   white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .editableDiv:focus {
@@ -448,15 +449,13 @@ h2+h3 {
 
 .glyphs-characters div {
   font-size: calc(var(--font-size) * 2.5);
-  outline: var(--border) solid var(--main-color);
-  outline-offset: -0.85px;
   height: calc(var(--font-size)*3.4);
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: var(--border) solid var(--main-color);
-  outline-offset: -0.85px;
+  outline-offset: calc(var(--border)*-0.81);
   user-select: none;
 }
 
